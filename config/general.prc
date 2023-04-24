@@ -2,7 +2,10 @@
 # used by both developer & production instances of Toontown Online.
 
 # Window settings
+win-size 1280 720
 win-origin -1 -1
+load-display pandagl
+audio-library-name p3openal_audio
 
 # Notify settings
 notify-level-collide warning
