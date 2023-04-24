@@ -1,40 +1,44 @@
 
 """Undocumented Module"""
 
+from direct.showbase import DConfig
+from panda3d.core import ConfigVariableBool
+from direct.interval.IntervalGlobal import *
+from direct.directutil import Verify
 __all__ = ['enumerate', 'unique', 'indent', 'nonRepeatingRandomList',
-'writeFsmTree', 'StackTrace', 'traceFunctionCall', 'traceParentCall',
-'printThisCall', 'tron', 'trace', 'troff', 'getClassLineage', 'pdir',
-'_pdir', '_is_variadic', '_has_keywordargs', '_varnames', '_getcode',
-'Signature', 'doc', 'adjust', 'difference', 'intersection', 'union',
-'sameElements', 'makeList', 'makeTuple', 'list2dict', 'invertDict',
-'invertDictLossless', 'uniqueElements', 'disjoint', 'contains',
-'replace', 'reduceAngle', 'fitSrcAngle2Dest', 'fitDestAngle2Src',
-'closestDestAngle2', 'closestDestAngle', 'binaryRepr', 'profileFunc',
-'profiled', 'startProfile', 'printProfile', 'getSetterName',
-'getSetter', 'Functor', 'Stack', 'Queue', 'ParamObj',
-'POD', 'bound', 'clamp', 'lerp', 'average', 'addListsByValue',
-'boolEqual', 'lineupPos', 'formatElapsedSeconds', 'solveQuadratic',
-'stackEntryInfo', 'lineInfo', 'callerInfo', 'lineTag',
-'findPythonModule', 'describeException', 'mostDerivedLast',
-'clampScalar', 'weightedChoice', 'randFloat', 'normalDistrib',
-'weightedRand', 'randUint31', 'randInt32', 'randUint32',
-'SerialNumGen', 'serialNum', 'uniqueName', 'Enum', 'Singleton',
-'SingletonError', 'printListEnum', 'safeRepr',
-'fastRepr', 'tagRepr', 'tagWithCaller', 'isDefaultValue', 'set_trace', 'pm',
-'ScratchPad', 'Sync', 'RefCounter', 'itype', 'getNumberedTypedString',
-'getNumberedTypedSortedString', 'getNumberedTypedSortedStringWithReferrers',
-'getNumberedTypedSortedStringWithReferrersGen',
-'printNumberedTyped', 'DelayedCall', 'DelayedFunctor',
-'FrameDelayedCall', 'SubframeCall', 'ArgumentEater', 'ClassTree', 'getBase',
-'HotkeyBreaker','logMethodCalls','GoldenRatio',
-'GoldenRectangle', 'pivotScalar', 'rad90', 'rad180', 'rad270', 'rad360',
-'nullGen', 'loopGen', 'makeFlywheelGen', 'flywheel', 'choice',
-'printStack', 'printReverseStack', 'listToIndex2item', 'listToItem2index',
-'pandaBreak','pandaTrace','formatTimeCompact','DestructiveScratchPad',
-'deeptype','getProfileResultString','StdoutCapture','StdoutPassthrough',
-'Averager', 'getRepository', 'formatTimeExact', 'startSuperLog', 'endSuperLog',
-'typeName', 'safeTypeName', 'histogramDict', 'unescapeHtmlString', 'blendAnimation',
-'deprecated', 'isClient', 'quantize', 'quantizeVec', ]
+           'writeFsmTree', 'StackTrace', 'traceFunctionCall', 'traceParentCall',
+           'printThisCall', 'tron', 'trace', 'troff', 'getClassLineage', 'pdir',
+           '_pdir', '_is_variadic', '_has_keywordargs', '_varnames', '_getcode',
+           'Signature', 'doc', 'adjust', 'difference', 'intersection', 'union',
+           'sameElements', 'makeList', 'makeTuple', 'list2dict', 'invertDict',
+           'invertDictLossless', 'uniqueElements', 'disjoint', 'contains',
+           'replace', 'reduceAngle', 'fitSrcAngle2Dest', 'fitDestAngle2Src',
+           'closestDestAngle2', 'closestDestAngle', 'binaryRepr', 'profileFunc',
+           'profiled', 'startProfile', 'printProfile', 'getSetterName',
+           'getSetter', 'Functor', 'Stack', 'Queue', 'ParamObj',
+           'POD', 'bound', 'clamp', 'lerp', 'average', 'addListsByValue',
+           'boolEqual', 'lineupPos', 'formatElapsedSeconds', 'solveQuadratic',
+           'stackEntryInfo', 'lineInfo', 'callerInfo', 'lineTag',
+           'findPythonModule', 'describeException', 'mostDerivedLast',
+           'clampScalar', 'weightedChoice', 'randFloat', 'normalDistrib',
+           'weightedRand', 'randUint31', 'randInt32', 'randUint32',
+           'SerialNumGen', 'serialNum', 'uniqueName', 'Enum', 'Singleton',
+           'SingletonError', 'printListEnum', 'safeRepr',
+           'fastRepr', 'tagRepr', 'tagWithCaller', 'isDefaultValue', 'set_trace', 'pm',
+           'ScratchPad', 'Sync', 'RefCounter', 'itype', 'getNumberedTypedString',
+           'getNumberedTypedSortedString', 'getNumberedTypedSortedStringWithReferrers',
+           'getNumberedTypedSortedStringWithReferrersGen',
+           'printNumberedTyped', 'DelayedCall', 'DelayedFunctor',
+           'FrameDelayedCall', 'SubframeCall', 'ArgumentEater', 'ClassTree', 'getBase',
+           'HotkeyBreaker', 'logMethodCalls', 'GoldenRatio',
+           'GoldenRectangle', 'pivotScalar', 'rad90', 'rad180', 'rad270', 'rad360',
+           'nullGen', 'loopGen', 'makeFlywheelGen', 'flywheel', 'choice',
+           'printStack', 'printReverseStack', 'listToIndex2item', 'listToItem2index',
+           'pandaBreak', 'pandaTrace', 'formatTimeCompact', 'DestructiveScratchPad',
+           'deeptype', 'getProfileResultString', 'StdoutCapture', 'StdoutPassthrough',
+           'Averager', 'getRepository', 'formatTimeExact', 'startSuperLog', 'endSuperLog',
+           'typeName', 'safeTypeName', 'histogramDict', 'unescapeHtmlString', 'blendAnimation',
+           'deprecated', 'isClient', 'quantize', 'quantizeVec', ]
 
 import types
 import string
@@ -47,7 +51,7 @@ import sys
 import random
 import time
 import gc
-#if __debug__:
+# if __debug__:
 import traceback
 import builtins
 from io import StringIO
@@ -59,14 +63,9 @@ import warnings
 
 __report_indent = 3
 
-from direct.directutil import Verify
-from direct.interval.IntervalGlobal import *
-from panda3d.core import ConfigVariableBool
-from direct.showbase import DConfig
 
 ScalarTypes = (float, int, int)
 
-import builtins
 if not hasattr(builtins, 'enumerate'):
     def enumerate(L):
         """Returns (0, L[0]), (1, L[1]), etc., allowing this syntax:
@@ -93,6 +92,7 @@ def Functor(function, *args, **kArgs):
         return function(*(argsCopy + cArgs), **kArgs)
     return functor
 """
+
 
 class Functor:
     def __init__(self, function, *args, **kargs):
@@ -145,45 +145,62 @@ class Functor:
         s += ')'
         return s
 
+
 class Stack:
     def __init__(self):
         self.__list = []
+
     def push(self, item):
         self.__list.append(item)
+
     def top(self):
         # return the item on the top of the stack without popping it off
         return self.__list[-1]
+
     def pop(self):
         return self.__list.pop()
+
     def clear(self):
         self.__list = []
+
     def isEmpty(self):
         return len(self.__list) == 0
+
     def __len__(self):
         return len(self.__list)
+
 
 class Queue:
     # FIFO queue
     # interface is intentionally identical to Stack (LIFO)
     def __init__(self):
         self.__list = []
+
     def push(self, item):
         self.__list.append(item)
+
     def top(self):
         # return the next item at the front of the queue without popping it off
         return self.__list[0]
+
     def front(self):
         return self.__list[0]
+
     def back(self):
         return self.__list[-1]
+
     def pop(self):
         return self.__list.pop(0)
+
     def clear(self):
         self.__list = []
+
     def isEmpty(self):
         return len(self.__list) == 0
+
     def __len__(self):
         return len(self.__list)
+
 
 if __debug__ and __name__ == '__main__':
     q = Queue()
@@ -206,10 +223,12 @@ if __debug__ and __name__ == '__main__':
     assert len(q) == 0
     assert q.isEmpty()
 
+
 def unique(L1, L2):
     """Return a list containing all items in 'L1' that are not in 'L2'"""
     L2 = dict([(k, None) for k in L2])
     return [item for item in L1 if item not in L2]
+
 
 def indent(stream, numIndents, str):
     """
@@ -221,30 +240,27 @@ def indent(stream, numIndents, str):
 
 def nonRepeatingRandomList(vals, max):
     random.seed(time.time())
-    #first generate a set of random values
-    valueList=list(range(max))
-    finalVals=[]
+    # first generate a set of random values
+    valueList = list(range(max))
+    finalVals = []
     for i in range(vals):
-        index=int(random.random()*len(valueList))
+        index = int(random.random()*len(valueList))
         finalVals.append(valueList[index])
         valueList.remove(valueList[index])
     return finalVals
 
 
-
-def writeFsmTree(instance, indent = 0):
+def writeFsmTree(instance, indent=0):
     if hasattr(instance, 'parentFSM'):
         writeFsmTree(instance.parentFSM, indent-2)
     elif hasattr(instance, 'fsm'):
         name = ''
         if hasattr(instance.fsm, 'state'):
             name = instance.fsm.state.name
-        print("%s: %s"%(instance.fsm.name, name))
+        print("%s: %s" % (instance.fsm.name, name))
 
 
-
-
-#if __debug__: #RAU accdg to Darren its's ok that StackTrace is not protected by __debug__
+# if __debug__: #RAU accdg to Darren its's ok that StackTrace is not protected by __debug__
 # DCR: if somebody ends up using StackTrace in production, either
 # A) it will be OK because it hardly ever gets called, or
 # B) it will be easy to track it down (grep for StackTrace)
@@ -273,7 +289,8 @@ class StackTrace:
         r = ''
         comma = ','
         for filename, lineNum, funcName, text in self.trace:
-            r += '%s.%s:%s%s' % (filename[:filename.rfind('.py')][filename.rfind('\\')+1:], funcName, lineNum, comma)
+            r += '%s.%s:%s%s' % (filename[:filename.rfind('.py')]
+                                 [filename.rfind('\\')+1:], funcName, lineNum, comma)
         if len(r):
             r = r[:-len(comma)]
         return r
@@ -282,30 +299,37 @@ class StackTrace:
         r = ''
         comma = ','
         for filename, lineNum, funcName, text in self.trace:
-            r = '%s.%s:%s%s%s' % (filename[:filename.rfind('.py')][filename.rfind('\\')+1:], funcName, lineNum, comma, r)
+            r = '%s.%s:%s%s%s' % (filename[:filename.rfind(
+                '.py')][filename.rfind('\\')+1:], funcName, lineNum, comma, r)
         if len(r):
             r = r[:-len(comma)]
         return r
 
     def __str__(self):
-        r = "Debug stack trace of %s (back %s frames):\n"%(
+        r = "Debug stack trace of %s (back %s frames):\n" % (
             self.label, len(self.trace),)
         for i in traceback.format_list(self.trace):
-            r+=i
-        r+="***** NOTE: This is not a crash. This is a debug stack trace. *****"
+            r += i
+        r += "***** NOTE: This is not a crash. This is a debug stack trace. *****"
         return r
+
 
 def printStack():
     print(StackTrace(start=1).compact())
     return True
+
+
 def printReverseStack():
     print(StackTrace(start=1).reverseCompact())
     return True
+
+
 def printVerboseStack():
     print(StackTrace(start=1))
     return True
 
-#-----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
+
 
 def traceFunctionCall(frame):
     """
@@ -317,40 +341,45 @@ def traceFunctionCall(frame):
     co = f.f_code
     dict = f.f_locals
     n = co.co_argcount
-    if co.co_flags & 4: n = n+1
-    if co.co_flags & 8: n = n+1
-    r=''
+    if co.co_flags & 4:
+        n = n+1
+    if co.co_flags & 8:
+        n = n+1
+    r = ''
     if 'self' in dict:
-        r = '%s.'%(dict['self'].__class__.__name__,)
-    r+="%s("%(f.f_code.co_name,)
-    comma=0 # formatting, whether we should type a comma.
+        r = '%s.' % (dict['self'].__class__.__name__,)
+    r += "%s(" % (f.f_code.co_name,)
+    comma = 0  # formatting, whether we should type a comma.
     for i in range(n):
         name = co.co_varnames[i]
-        if name=='self':
+        if name == 'self':
             continue
         if comma:
-            r+=', '
+            r += ', '
         else:
             # ok, we skipped the first one, the rest get commas:
-            comma=1
-        r+=name
-        r+='='
+            comma = 1
+        r += name
+        r += '='
         if name in dict:
-            v=safeRepr(dict[name])
-            if len(v)>2000:
+            v = safeRepr(dict[name])
+            if len(v) > 2000:
                 # r+="<too big for debug>"
                 r += (v[:2000] + "...")
             else:
-                r+=v
-        else: r+="*** undefined ***"
+                r += v
+        else:
+            r += "*** undefined ***"
     return r+')'
+
 
 def traceParentCall():
     return traceFunctionCall(sys._getframe(2))
 
+
 def printThisCall():
     print(traceFunctionCall(sys._getframe(1)))
-    return 1 # to allow "assert printThisCall()"
+    return 1  # to allow "assert printThisCall()"
 
 
 if __debug__:
@@ -362,26 +391,29 @@ if __debug__:
 
         (Based on getClassLineage())
         """
-        r=""
+        r = ""
         if type(obj) == list:
-            r+=(" "*indent)+"python list\n"
+            r += (" "*indent)+"python list\n"
         elif type(obj) == dict:
-            r+=(" "*indent)+"python dictionary\n"
+            r += (" "*indent)+"python dictionary\n"
         elif type(obj) == types.ModuleType:
-            r+=(" "*indent)+str(obj)+"\n"
+            r += (" "*indent)+str(obj)+"\n"
         elif type(obj) == types.InstanceType:
-            r+=lineage(obj.__class__, verbose, indent)
+            r += lineage(obj.__class__, verbose, indent)
         elif type(obj) == type:
-            r+=(" "*indent)
+            r += (" "*indent)
             if verbose:
-                r+=obj.__module__+"."
-            r+=obj.__name__+"\n"
+                r += obj.__module__+"."
+            r += obj.__name__+"\n"
             for c in obj.__bases__:
-                r+=lineage(c, verbose, indent+2)
+                r += lineage(c, verbose, indent+2)
         return r
+
 
 def tron():
     sys.settrace(trace)
+
+
 def trace(frame, event, arg):
     if event == 'line':
         pass
@@ -392,10 +424,13 @@ def trace(frame, event, arg):
     elif event == 'exception':
         print("exception")
     return trace
+
+
 def troff():
     sys.settrace(None)
 
-#-----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
+
 
 def getClassLineage(obj):
     """
@@ -423,8 +458,9 @@ def getClassLineage(obj):
         # Not what I'm looking for
         return []
 
-def pdir(obj, str = None, width = None,
-            fTruncate = 1, lineWidth = 75, wantPrivate = 0):
+
+def pdir(obj, str=None, width=None,
+         fTruncate=1, lineWidth=75, wantPrivate=0):
     # Remove redundant class entries
     uniqueLineage = []
     for l in getClassLineage(obj):
@@ -438,8 +474,9 @@ def pdir(obj, str = None, width = None,
         _pdir(obj, str, width, fTruncate, lineWidth, wantPrivate)
         print()
 
-def _pdir(obj, str = None, width = None,
-            fTruncate = 1, lineWidth = 75, wantPrivate = 0):
+
+def _pdir(obj, str=None, width=None,
+          fTruncate=1, lineWidth=75, wantPrivate=0):
     """
     Print out a formatted list of members and methods of an instance or class
     """
@@ -452,18 +489,21 @@ def _pdir(obj, str = None, width = None,
             header = '*' * padBefore + name + '*' * padAfter
         print(header)
         print()
-    def printInstanceHeader(i, printHeader = printHeader):
+
+    def printInstanceHeader(i, printHeader=printHeader):
         printHeader(i.__class__.__name__ + ' INSTANCE INFO')
-    def printClassHeader(c, printHeader = printHeader):
+
+    def printClassHeader(c, printHeader=printHeader):
         printHeader(c.__name__ + ' CLASS INFO')
-    def printDictionaryHeader(d, printHeader = printHeader):
+
+    def printDictionaryHeader(d, printHeader=printHeader):
         printHeader('DICTIONARY INFO')
     # Print Header
     if type(obj) == types.InstanceType:
         printInstanceHeader(obj)
     elif type(obj) == type:
         printClassHeader(obj)
-    elif type (obj) == dict:
+    elif type(obj) == dict:
         printDictionaryHeader(obj)
     # Get dict
     if type(obj) == dict:
@@ -523,19 +563,24 @@ def _pdir(obj, str = None, width = None,
             strvalue = strvalue[:max(1, lineWidth - maxWidth)]
         print((format % key)[:maxWidth] + '\t' + strvalue)
 
+
 # Magic numbers: These are the bit masks in func_code.co_flags that
 # reveal whether or not the function has a *arg or **kw argument.
 _POS_LIST = 4
 _KEY_DICT = 8
 
+
 def _is_variadic(function):
     return function.__code__.co_flags & _POS_LIST
+
 
 def _has_keywordargs(function):
     return function.__code__.co_flags & _KEY_DICT
 
+
 def _varnames(function):
     return function.__code__.co_varnames
+
 
 def _getcode(f):
     """
@@ -545,8 +590,10 @@ def _getcode(f):
     """
     def method_get(f):
         return f.__name__, f.__func__
+
     def function_get(f):
         return f.__name__, f
+
     def instance_get(f):
         if hasattr(f, '__call__'):
             method = f.__call__
@@ -559,34 +606,38 @@ def _getcode(f):
             s = ("Instance %s of class %s does not have a __call__ method" %
                  (f, f.__class__.__name__))
             raise TypeError(s)
+
     def class_get(f):
         if hasattr(f, '__init__'):
             return f.__name__, f.__init__.__func__
         else:
             return f.__name__, lambda: None
-    codedict = { types.UnboundMethodType: method_get,
-                 types.MethodType:        method_get,
-                 types.FunctionType:      function_get,
-                 types.InstanceType:      instance_get,
-                 type:         class_get,
-                 }
+    codedict = {types.UnboundMethodType: method_get,
+                types.MethodType:        method_get,
+                types.FunctionType:      function_get,
+                types.InstanceType:      instance_get,
+                type:         class_get,
+                }
     try:
         return codedict[type(f)](f)
     except KeyError:
-        if hasattr(f, '__call__'): # eg, built-in functions and methods
+        if hasattr(f, '__call__'):  # eg, built-in functions and methods
             # raise ValueError, "type %s not supported yet." % type(f)
             return f.__name__, None
         else:
             raise TypeError("object %s of type %s is not callable." %
-                                     (f, type(f)))
+                            (f, type(f)))
+
 
 class Signature:
     def __init__(self, func):
         self.type = type(func)
         self.name, self.func = _getcode(func)
+
     def ordinary_args(self):
         n = self.func.__code__.co_argcount
         return _varnames(self.func)[0:n]
+
     def special_args(self):
         n = self.func.__code__.co_argcount
         x = {}
@@ -600,6 +651,7 @@ class Signature:
         else:
             pass
         return x
+
     def full_arglist(self):
         base = list(self.ordinary_args())
         x = self.special_args()
@@ -608,6 +660,7 @@ class Signature:
         if 'keyword' in x:
             base.append(x['keyword'])
         return base
+
     def defaults(self):
         defargs = self.func.__defaults__
         args = self.ordinary_args()
@@ -618,6 +671,7 @@ class Signature:
         else:
             pass
         return mapping
+
     def __repr__(self):
         if self.func:
             defaults = self.defaults()
@@ -642,7 +696,8 @@ def doc(obj):
        (isinstance(obj, types.FunctionType)):
         print(obj.__doc__)
 
-def adjust(command = None, dim = 1, parent = None, **kw):
+
+def adjust(command=None, dim=1, parent=None, **kw):
     """
     adjust(command = None, parent = None, **kw)
     Popup and entry scale to adjust a parameter
@@ -675,15 +730,18 @@ def adjust(command = None, dim = 1, parent = None, **kw):
         vg = Valuator.ValuatorGroupPanel(*(parent,), **kw)
     else:
         vg = Valuator.ValuatorGroup(*(parent,), **kw)
-        vg.pack(expand = 1, fill = 'x')
+        vg.pack(expand=1, fill='x')
     return vg
+
 
 def difference(a, b):
     """
     difference(list, list):
     """
-    if not a: return b
-    if not b: return a
+    if not a:
+        return b
+    if not b:
+        return a
     d = []
     for i in a:
         if (i not in b) and (i not in d):
@@ -693,12 +751,15 @@ def difference(a, b):
             d.append(i)
     return d
 
+
 def intersection(a, b):
     """
     intersection(list, list):
     """
-    if not a: return []
-    if not b: return []
+    if not a:
+        return []
+    if not b:
+        return []
     d = []
     for i in a:
         if (i in b) and (i not in d):
@@ -707,6 +768,7 @@ def intersection(a, b):
         if (i in a) and (i not in d):
             d.append(i)
     return d
+
 
 def union(a, b):
     """
@@ -719,6 +781,7 @@ def union(a, b):
             c.append(i)
     return c
 
+
 def sameElements(a, b):
     if len(a) != len(b):
         return 0
@@ -730,6 +793,7 @@ def sameElements(a, b):
             return 0
     return 1
 
+
 def makeList(x):
     """returns x, converted to a list"""
     if type(x) is list:
@@ -737,7 +801,8 @@ def makeList(x):
     elif type(x) is tuple:
         return list(x)
     else:
-        return [x,]
+        return [x, ]
+
 
 def makeTuple(x):
     """returns x, converted to a tuple"""
@@ -748,9 +813,11 @@ def makeTuple(x):
     else:
         return (x,)
 
+
 def list2dict(L, value=None):
     """creates dict using elements of list, all assigned to same value"""
     return dict([(k, value) for k in L])
+
 
 def listToIndex2item(L):
     """converts list to dict of list index->list item"""
@@ -759,7 +826,9 @@ def listToIndex2item(L):
         d[i] = item
     return d
 
-assert listToIndex2item(['a','b']) == {0: 'a', 1: 'b',}
+
+assert listToIndex2item(['a', 'b']) == {0: 'a', 1: 'b', }
+
 
 def listToItem2index(L):
     """converts list to dict of list item->list index
@@ -769,7 +838,9 @@ def listToItem2index(L):
         d[item] = i
     return d
 
-assert listToItem2index(['a','b']) == {'a': 0, 'b': 1,}
+
+assert listToItem2index(['a', 'b']) == {'a': 0, 'b': 1, }
+
 
 def invertDict(D, lossy=False):
     """creates a dictionary by 'inverting' D; keys are placed in the new
@@ -787,6 +858,7 @@ def invertDict(D, lossy=False):
         n[value] = key
     return n
 
+
 def invertDictLossless(D):
     """similar to invertDict, but values of new dict are lists of keys from
     old dict. No information is lost.
@@ -801,9 +873,11 @@ def invertDictLossless(D):
         n[value].append(key)
     return n
 
+
 def uniqueElements(L):
     """are all elements of list unique?"""
     return len(L) == len(list2dict(L))
+
 
 def disjoint(L1, L2):
     """returns non-zero if L1 and L2 have no common elements"""
@@ -812,6 +886,7 @@ def disjoint(L1, L2):
         if k in used:
             return 0
     return 1
+
 
 def contains(whole, sub):
     """
@@ -825,6 +900,7 @@ def contains(whole, sub):
             return 0
     # If you got here, whole must contain sub
     return 1
+
 
 def replace(list, old, new, all=0):
     """
@@ -848,16 +924,19 @@ def replace(list, old, new, all=0):
                 list[i] = new
         return numReplaced
 
+
 rad90 = math.pi / 2.
 rad180 = math.pi
 rad270 = 1.5 * math.pi
 rad360 = 2. * math.pi
+
 
 def reduceAngle(deg):
     """
     Reduces an angle (in degrees) to a value in [-180..180)
     """
     return (((deg + 180.) % 360.) - 180.)
+
 
 def fitSrcAngle2Dest(src, dest):
     """
@@ -872,6 +951,7 @@ def fitSrcAngle2Dest(src, dest):
     """
     return dest + reduceAngle(src - dest)
 
+
 def fitDestAngle2Src(src, dest):
     """
     given a src and destination angle, returns an equivalent dest angle
@@ -883,6 +963,7 @@ def fitDestAngle2Src(src, dest):
     fitDestAngle2Src(1, 180) == 180
     """
     return src + (reduceAngle(dest - src))
+
 
 def closestDestAngle2(src, dest):
     # The function above didn't seem to do what I wanted. So I hacked
@@ -898,6 +979,7 @@ def closestDestAngle2(src, dest):
     else:
         # otherwise just go to the original destination
         return dest
+
 
 def closestDestAngle(src, dest):
     # The function above didn't seem to do what I wanted. So I hacked
@@ -915,17 +997,19 @@ def closestDestAngle(src, dest):
         return dest
 
 
-def binaryRepr(number, max_length = 32):
+def binaryRepr(number, max_length=32):
     # This will only work reliably for relatively small numbers.
     # Increase the value of max_length if you think you're going
     # to use long integers
     assert number < 2 << max_length
-    shifts = list(map (operator.rshift, max_length * [number], \
+    shifts = list(map(operator.rshift, max_length * [number],
                   list(range(max_length - 1, -1, -1))))
-    digits = list(map (operator.mod, shifts, max_length * [2]))
-    if not digits.count (1): return 0
-    digits = digits [digits.index (1):]
+    digits = list(map(operator.mod, shifts, max_length * [2]))
+    if not digits.count(1):
+        return 0
+    digits = digits[digits.index(1):]
     return ''.join([repr(digit) for digit in digits])
+
 
 class StdoutCapture:
     # redirects stdout to a string
@@ -933,6 +1017,7 @@ class StdoutCapture:
         self._oldStdout = sys.stdout
         sys.stdout = self
         self._string = ''
+
     def destroy(self):
         sys.stdout = self._oldStdout
         del self._oldStdout
@@ -944,6 +1029,7 @@ class StdoutCapture:
     def write(self, string):
         self._string = ''.join([self._string, string])
 
+
 class StdoutPassthrough(StdoutCapture):
     # like StdoutCapture but also allows output to go through to the OS as normal
 
@@ -952,6 +1038,7 @@ class StdoutPassthrough(StdoutCapture):
         self._string = ''.join([self._string, string])
         self._oldStdout.write(string)
 
+
 # constant profile defaults
 PyUtilProfileDefaultFilename = 'profiledata'
 PyUtilProfileDefaultLines = 80
@@ -959,12 +1046,14 @@ PyUtilProfileDefaultSorts = ['cumulative', 'time', 'calls']
 
 _ProfileResultStr = ''
 
+
 def getProfileResultString():
     # if you called profile with 'log' not set to True,
     # you can call this function to get the results as
     # a string
     global _ProfileResultStr
     return _ProfileResultStr
+
 
 def profileFunc(callback, name, terse, log=True):
     global _ProfileResultStr
@@ -974,15 +1063,16 @@ def profileFunc(callback, name, terse, log=True):
             'PythonUtil.profileStart(%s): aborted, already profiling %s'
             #'\nStack Trace:\n%s'
             % (name, builtins.globalProfileFunc,
-            #StackTrace()
-            ))
+               # StackTrace()
+               ))
         return
     builtins.globalProfileFunc = callback
     builtins.globalProfileResult = [None]
     prefix = '***** START PROFILE: %s *****' % name
     if log:
         print(prefix)
-    startProfile(cmd='globalProfileResult[0]=globalProfileFunc()', callInfo=(not terse), silent=not log)
+    startProfile(cmd='globalProfileResult[0]=globalProfileFunc()', callInfo=(
+        not terse), silent=not log)
     suffix = '***** END PROFILE: %s *****' % name
     if log:
         print(suffix)
@@ -992,6 +1082,7 @@ def profileFunc(callback, name, terse, log=True):
     del builtins.__dict__['globalProfileFunc']
     del builtins.__dict__['globalProfileResult']
     return result
+
 
 def profiled(category=None, terse=False):
     """ decorator for profiling functions
@@ -1005,7 +1096,8 @@ def profiled(category=None, terse=False):
 
     want-profile-particles 1
     """
-    assert type(category) in (bytes, type(None)), "must provide a category name for @profiled"
+    assert type(category) in (bytes, type(None)
+                              ), "must provide a category name for @profiled"
 
     # allow profiling in published versions
     """
@@ -1027,7 +1119,7 @@ def profiled(category=None, terse=False):
             name = '(%s) %s from %s' % (category, f.__name__, f.__module__)
 
             # showbase might not be loaded yet, so don't use
-            # base.config.  Instead, query the ConfigVariableBool.
+            # base.panda3d.  Instead, query the ConfigVariableBool.
             if (category is None) or ConfigVariableBool('want-profile-%s' % category, 0).getValue():
                 return profileFunc(Functor(f, *args, **kArgs), name, terse)
             else:
@@ -1035,6 +1127,7 @@ def profiled(category=None, terse=False):
         _profiled.__doc__ = f.__doc__
         return _profiled
     return profileDecorator
+
 
 # intercept profile-related file operations to avoid disk access
 movedOpenFuncs = []
@@ -1044,6 +1137,7 @@ profileFilenames = set()
 profileFilenameList = Stack()
 profileFilename2file = {}
 profileFilename2marshalData = {}
+
 
 def _profileOpen(filename, *args, **kArgs):
     # this is a replacement for the file open() builtin function
@@ -1063,6 +1157,7 @@ def _profileOpen(filename, *args, **kArgs):
         file = movedOpenFuncs[-1](filename, *args, **kArgs)
     return file
 
+
 def _profileMarshalDump(data, file):
     # marshal.dump doesn't work with StringIO objects
     # simulate it
@@ -1072,6 +1167,7 @@ def _profileMarshalDump(data, file):
             return None
     return movedDumpFuncs[-1](data, file)
 
+
 def _profileMarshalLoad(file):
     # marshal.load doesn't work with StringIO objects
     # simulate it
@@ -1079,6 +1175,7 @@ def _profileMarshalLoad(file):
         if file._profFilename in profileFilenames:
             return profileFilename2marshalData[file._profFilename]
     return movedLoadFuncs[-1](file)
+
 
 def _installProfileCustomFuncs(filename):
     assert filename not in profileFilenames
@@ -1091,9 +1188,11 @@ def _installProfileCustomFuncs(filename):
     movedLoadFuncs.append(marshal.load)
     marshal.load = _profileMarshalLoad
 
+
 def _getProfileResultFileInfo(filename):
     return (profileFilename2file.get(filename, None),
             profileFilename2marshalData.get(filename, None))
+
 
 def _setProfileResultsFileInfo(filename, info):
     f, m = info
@@ -1102,9 +1201,11 @@ def _setProfileResultsFileInfo(filename, info):
     if m:
         profileFilename2marshalData[filename] = m
 
+
 def _clearProfileResultFileInfo(filename):
     profileFilename2file.pop(filename, None)
     profileFilename2marshalData.pop(filename, None)
+
 
 def _removeProfileCustomFuncs(filename):
     assert profileFilenameList.top() == filename
@@ -1151,12 +1252,13 @@ def _profileWithoutGarbageLeak(cmd, filename):
     if filename is not None:
         prof.dump_stats(filename)
     else:
-        #return prof.print_stats(sort)  #DCR
-        retVal = prof.print_stats(sort) #DCR
+        # return prof.print_stats(sort)  #DCR
+        retVal = prof.print_stats(sort)  # DCR
     #################################
     # eliminate the garbage leak
     del prof.dispatcher
     return retVal
+
 
 def startProfile(filename=PyUtilProfileDefaultFilename,
                  lines=PyUtilProfileDefaultLines,
@@ -1182,6 +1284,8 @@ def startProfile(filename=PyUtilProfileDefaultFilename,
         os.remove(filename)
 
 # call these to see the results again, as a string or in the log
+
+
 def printProfile(filename=PyUtilProfileDefaultFilename,
                  lines=PyUtilProfileDefaultLines,
                  sorts=PyUtilProfileDefaultSorts,
@@ -1197,6 +1301,8 @@ def printProfile(filename=PyUtilProfileDefaultFilename,
             s.print_callers(lines)
 
 # same args as printProfile
+
+
 def extractProfile(*args, **kArgs):
     global _ProfileResultStr
     # capture print output
@@ -1208,13 +1314,17 @@ def extractProfile(*args, **kArgs):
     # restore stdout to what it was before
     sc.destroy()
 
+
 def getSetterName(valueName, prefix='set'):
     # getSetterName('color') -> 'setColor'
     # getSetterName('color', 'get') -> 'getColor'
     return '%s%s%s' % (prefix, valueName[0].upper(), valueName[1:])
+
+
 def getSetter(targetObj, valueName, prefix='set'):
     # getSetter(smiley, 'pos') -> smiley.setPos
     return getattr(targetObj, getSetterName(valueName, prefix))
+
 
 def mostDerivedLast(classList):
     """pass in list of classes. sorts list in-place, with derived classes
@@ -1222,12 +1332,15 @@ def mostDerivedLast(classList):
 
     class ClassSortKey(object):
         __slots__ = 'classobj',
+
         def __init__(self, classobj):
             self.classobj = classobj
+
         def __lt__(self, other):
             return issubclass(other.classobj, self.classobj)
 
     classList.sort(key=ClassSortKey)
+
 
 """
 ParamObj/ParamSet
@@ -1367,6 +1480,7 @@ del savedSettings
 
 """
 
+
 class ParamObj:
     # abstract base for classes that want to support a formal parameter
     # set whose values may be queried, changed, 'bulk' changed (defer reaction
@@ -1394,7 +1508,7 @@ class ParamObj:
             #             'spawnIndices': Functor(list, [1,5,22]),
             #         }
             #
-            }
+        }
 
         def __init__(self, *args, **kwArgs):
             self.__class__._compileDefaultParams()
@@ -1410,27 +1524,32 @@ class ParamObj:
                     for arg in list(kwArgs.keys()):
                         assert arg in self.getParams()
                 self.paramVals = dict(kwArgs)
+
         def getValue(self, param):
             if param in self.paramVals:
                 return self.paramVals[param]
             return self._Params[param]
+
         def applyTo(self, obj):
             # Apply our entire set of params to a ParamObj
             obj.lockParams()
             for param in self.getParams():
                 getSetter(obj, param)(self.getValue(param))
             obj.unlockParams()
+
         def extractFrom(self, obj):
             # Extract our entire set of params from a ParamObj
             obj.lockParams()
             for param in self.getParams():
                 self.paramVals[param] = getSetter(obj, param, 'get')()
             obj.unlockParams()
+
         @classmethod
         def getParams(cls):
             # returns safely-mutable list of param names
             cls._compileDefaultParams()
             return list(cls._Params.keys())
+
         @classmethod
         def getDefaultValue(cls, param):
             cls._compileDefaultParams()
@@ -1438,6 +1557,7 @@ class ParamObj:
             if hasattr(dv, '__call__'):
                 dv = dv()
             return dv
+
         @classmethod
         def _compileDefaultParams(cls):
             if '_Params' in cls.__dict__:
@@ -1455,6 +1575,7 @@ class ParamObj:
                 if 'Params' in c.__dict__:
                     # apply this class' default param values to our dict
                     cls._Params.update(c.Params)
+
         def __repr__(self):
             argStr = ''
             for param in self.getParams():
@@ -1496,7 +1617,7 @@ class ParamObj:
             if not hasattr(self, setterName):
                 # no; provide the default
                 def defaultSetter(self, value, param=param):
-                    #print '%s=%s for %s' % (param, value, id(self))
+                    # print '%s=%s for %s' % (param, value, id(self))
                     setattr(self, param, value)
                 self.__class__.__dict__[setterName] = defaultSetter
 
@@ -1529,6 +1650,7 @@ class ParamObj:
                 setattr(self, setterName, types.MethodType(
                     Functor(setterStub, param, setterFunc), self, self.__class__))
                     """
+
                 def setterStub(self, value, param=param, origSetterName=origSetterName):
                     # should we apply the value now or should we wait?
                     # if this obj's params are locked, we track which values have
@@ -1552,10 +1674,11 @@ class ParamObj:
                             priorValue = None
                         self._priorValuesStack.append({
                             param: priorValue,
-                            })
+                        })
                         getattr(self, origSetterName)(value)
                         # call the applier, if there is one
-                        applier = getattr(self, getSetterName(param, 'apply'), None)
+                        applier = getattr(
+                            self, getSetterName(param, 'apply'), None)
                         if applier is not None:
                             self._curParamStack.append(param)
                             applier()
@@ -1591,17 +1714,20 @@ class ParamObj:
         self._paramLockRefCount += 1
         if self._paramLockRefCount == 1:
             self._handleLockParams()
+
     def unlockParams(self):
         if self._paramLockRefCount > 0:
             self._paramLockRefCount -= 1
             if self._paramLockRefCount == 0:
                 self._handleUnlockParams()
+
     def _handleLockParams(self):
         # this will store the names of the parameters that are modified
         self._paramsSet = {}
         # this will store the values of modified params (from prior to
         # the lock).
         self._priorValuesStack.append({})
+
     def _handleUnlockParams(self):
         for param in self._paramsSet:
             # call the applier, if there is one
@@ -1614,8 +1740,10 @@ class ParamObj:
         if hasattr(self, 'handleParamChange'):
             self.handleParamChange(tuple(self._paramsSet.keys()))
         del self._paramsSet
+
     def paramsLocked(self):
         return self._paramLockRefCount > 0
+
     def getPriorValue(self):
         # call this within an apply function to find out what the prior value
         # of the param was
@@ -1631,12 +1759,14 @@ class ParamObj:
             argStr += '%s=%s,' % (param, repr(value))
         return '%s(%s)' % (self.__class__.__name__, argStr)
 
+
 if __debug__ and __name__ == '__main__':
     class ParamObjTest(ParamObj):
         class ParamSet(ParamObj.ParamSet):
             Params = {
                 'num': 0,
             }
+
         def applyNum(self):
             self.priorValue = self.getPriorValue()
     pto = ParamObjTest()
@@ -1701,6 +1831,8 @@ s3.build = TALL
 faction2 = s2.getFaction()
 faction3 = s3.faction
 """
+
+
 class POD:
     DataSet = {
         # base class does not define any data items, but they would
@@ -1717,7 +1849,8 @@ class POD:
         #     DataSet = {
         #         'spawnIndices': Functor(list, [1,5,22]),
         #         }
-        }
+    }
+
     def __init__(self, **kwArgs):
         self.__class__._compileDefaultDataSet()
         if __debug__:
@@ -1726,7 +1859,7 @@ class POD:
             for arg in list(kwArgs.keys()):
                 assert arg in self.getDataNames(), (
                     "unknown argument for %s: '%s'" % (
-                    self.__class__, arg))
+                        self.__class__, arg))
         # assign each of our data items directly to self
         for name in self.getDataNames():
             # if a value has been passed in for a data item, use
@@ -1744,6 +1877,7 @@ class POD:
     # positional argument; that was conflicting with POD subclasses that wanted
     # to define different behavior for themselves when given a positional
     # constructor argument
+
     def copyFrom(self, other, strict=False):
         # if 'strict' is true, other must have a value for all of our data items
         # otherwise we'll use the defaults
@@ -1757,13 +1891,16 @@ class POD:
                     setattr(self, name, self.getDefaultValue(name))
         # support 'p = POD.POD().copyFrom(other)' syntax
         return self
+
     def makeCopy(self):
         # returns a duplicate of this object
         return self.__class__().copyFrom(self)
+
     def applyTo(self, obj):
         # Apply our entire set of data to another POD
         for name in self.getDataNames():
             getSetter(obj, name)(getSetter(self, name, 'get')())
+
     def getValue(self, name):
         return getSetter(self, name, 'get')()
 
@@ -1772,6 +1909,7 @@ class POD:
         # returns safely-mutable list of datum names
         cls._compileDefaultDataSet()
         return list(cls._DataSet.keys())
+
     @classmethod
     def getDefaultValue(cls, name):
         cls._compileDefaultDataSet()
@@ -1786,6 +1924,7 @@ class POD:
         if hasattr(dv, '__call__'):
             dv = dv()
         return dv
+
     @classmethod
     def _compileDefaultDataSet(cls):
         if '_DataSet' in cls.__dict__:
@@ -1828,11 +1967,12 @@ class POD:
             argStr += '%s=%s,' % (name, repr(getSetter(self, name, 'get')()))
         return '%s(%s)' % (self.__class__.__name__, argStr)
 
+
 if __debug__ and __name__ == '__main__':
     class PODtest(POD):
         DataSet = {
             'foo': dict,
-            }
+        }
     p1 = PODtest()
     p2 = PODtest()
     assert hasattr(p1, 'foo')
@@ -1846,7 +1986,7 @@ if __debug__ and __name__ == '__main__':
     assert len(p1.foo) == 1
     assert len(p2.foo) == 0
     # make sure the setter is working
-    p2.setFoo({10:20})
+    p2.setFoo({10: 20})
     assert p2.foo[10] == 20
     # make sure modifications to mutable data items don't affect other
     # instances
@@ -1855,7 +1995,7 @@ if __debug__ and __name__ == '__main__':
     class DerivedPOD(PODtest):
         DataSet = {
             'bar': list,
-            }
+        }
     d1 = DerivedPOD()
     # make sure that derived instances get their own copy of mutable
     # data items
@@ -1864,6 +2004,7 @@ if __debug__ and __name__ == '__main__':
     # make sure derived instances get their own items
     assert hasattr(d1, 'bar')
     assert len(d1.bar) == 0
+
 
 def bound(value, bound1, bound2):
     """
@@ -1874,7 +2015,10 @@ def bound(value, bound1, bound2):
         return min(max(value, bound2), bound1)
     else:
         return min(max(value, bound1), bound2)
+
+
 clamp = bound
+
 
 def lerp(v0, v1, t):
     """
@@ -1882,6 +2026,7 @@ def lerp(v0, v1, t):
     t == 0 maps to v0, t == 1 maps to v1
     """
     return v0 + ((v1 - v0) * t)
+
 
 def getShortestRotation(start, end):
     """
@@ -1898,6 +2043,7 @@ def getShortestRotation(start, end):
             start += 360
     return (start, end)
 
+
 def average(*args):
     """ returns simple average of list of values """
     val = 0.
@@ -1905,20 +2051,26 @@ def average(*args):
         val += arg
     return val / len(args)
 
+
 class Averager:
     def __init__(self, name):
         self._name = name
         self.reset()
+
     def reset(self):
         self._total = 0.
         self._count = 0
+
     def addValue(self, value):
         self._total += value
         self._count += 1
+
     def getAverage(self):
         return self._total / self._count
+
     def getCount(self):
         return self._count
+
 
 def addListsByValue(a, b):
     """
@@ -1930,6 +2082,7 @@ def addListsByValue(a, b):
         c.append(x + y)
     return c
 
+
 def boolEqual(a, b):
     """
     returns true if a and b are both true or both false.
@@ -1937,6 +2090,7 @@ def boolEqual(a, b):
     (a.k.a. xnor -- eXclusive Not OR).
     """
     return (a and b) or not (a or b)
+
 
 def lineupPos(i, num, spacing):
     """
@@ -1949,6 +2103,7 @@ def lineupPos(i, num, spacing):
     assert i >= 0 and i < num
     pos = float(i) * spacing
     return pos - ((float(spacing) * (num-1))/2.)
+
 
 def formatElapsedSeconds(seconds):
     """
@@ -1977,6 +2132,7 @@ def formatElapsedSeconds(seconds):
     else:
         return "%s%d:%02d" % (sign, minutes, seconds)
 
+
 def solveQuadratic(a, b, c):
     # quadratic equation: ax^2 + bx + c = 0
     # quadratic formula:  x = [-b +/- sqrt(b^2 - 4ac)] / 2a
@@ -2002,6 +2158,7 @@ def solveQuadratic(a, b, c):
         root1 = ((-b) - sqrtD) / twoA
         root2 = ((-b) + sqrtD) / twoA
         return [root1, root2]
+
 
 def stackEntryInfo(depth=0, baseFileName=1):
     """
@@ -2034,6 +2191,7 @@ def stackEntryInfo(depth=0, baseFileName=1):
 
     return result
 
+
 def lineInfo(baseFileName=1):
     """
     returns the sourcefilename, line number, and function name of the
@@ -2043,6 +2201,7 @@ def lineInfo(baseFileName=1):
     """
     return stackEntryInfo(1, baseFileName)
 
+
 def callerInfo(baseFileName=1, howFarBack=0):
     """
     returns the sourcefilename, line number, and function name of the
@@ -2051,6 +2210,7 @@ def callerInfo(baseFileName=1, howFarBack=0):
     see stackEntryInfo, above, for info on 'baseFileName' and return types
     """
     return stackEntryInfo(2+howFarBack, baseFileName)
+
 
 def lineTag(baseFileName=1, verbose=0, separator=':'):
     """
@@ -2075,6 +2235,7 @@ def lineTag(baseFileName=1, verbose=0, separator=':'):
         return '%s%s%s%s%s' % (fileName, separator, lineNum, separator,
                                funcName)
 
+
 def findPythonModule(module):
     # Look along the python load path for the indicated filename.
     # Returns the located pathname, or None if the filename is not
@@ -2087,7 +2248,8 @@ def findPythonModule(module):
 
     return None
 
-def describeException(backTrace = 4):
+
+def describeException(backTrace=4):
     # When called in an exception handler, returns a string describing
     # the current exception.
 
@@ -2098,7 +2260,7 @@ def describeException(backTrace = 4):
         import array
         lnotab = array.array('B', code.co_lnotab)
 
-        line   = code.co_firstlineno
+        line = code.co_firstlineno
         for i in range(0, len(lnotab), 2):
             byte -= lnotab[i]
             if byte <= 0:
@@ -2137,6 +2299,7 @@ def describeException(backTrace = 4):
     description += "%s: %s" % (exceptionName, extraInfo)
     return description
 
+
 def clampScalar(value, a, b):
     # calling this ought to be faster than calling both min and max
     if a < b:
@@ -2154,15 +2317,18 @@ def clampScalar(value, a, b):
         else:
             return value
 
+
 def pivotScalar(scalar, pivot):
     # reflect scalar about pivot; see tests below
     return pivot + (pivot - scalar)
+
 
 if __debug__ and __name__ == '__main__':
     assert pivotScalar(1, 0) == -1
     assert pivotScalar(-1, 0) == 1
     assert pivotScalar(3, 5) == 7
     assert pivotScalar(10, 1) == -8
+
 
 def weightedChoice(choiceList, rng=random.random, sum=None):
     """given a list of (weight, item) pairs, chooses an item based on the
@@ -2185,11 +2351,13 @@ def weightedChoice(choiceList, rng=random.random, sum=None):
     # Return the last item.
     return item
 
+
 def randFloat(a, b=0., rng=random.random):
     """returns a random float in [a, b]
     call with single argument to generate random float between arg and zero
     """
     return lerp(a, b, rng())
+
 
 def normalDistrib(a, b, gauss=random.gauss):
     """
@@ -2226,6 +2394,7 @@ def normalDistrib(a, b, gauss=random.gauss):
         if (r >= a) and (r <= b):
             return r
 
+
 def weightedRand(valDict, rng=random.random):
     """
     pass in a dictionary with a selection -> weight mapping.  Eg.
@@ -2255,10 +2424,12 @@ def weightedRand(valDict, rng=random.random):
     assert True, "Should never get here"
     return selections[-1]
 
+
 def randUint31(rng=random.random):
     """returns a random integer in [0..2^31).
     rng must return float in [0..1]"""
     return int(rng() * 0x7FFFFFFF)
+
 
 def randInt32(rng=random.random):
     """returns a random integer in [-2147483648..2147483647].
@@ -2269,48 +2440,63 @@ def randInt32(rng=random.random):
         i *= -1
     return i
 
+
 def randUint32(rng=random.random):
     """returns a random integer in [0..2^32).
     rng must return float in [0..1]"""
     return int(rng() * 0xFFFFFFFF)
 
+
 class SerialNumGen:
     """generates serial numbers"""
+
     def __init__(self, start=None):
         if start is None:
             start = 0
         self.__counter = start-1
+
     def __next__(self):
         self.__counter += 1
         return self.__counter
+
 
 class SerialMaskedGen(SerialNumGen):
     def __init__(self, mask, start=None):
         self._mask = mask
         SerialNumGen.__init__(self, start)
+
     def __next__(self):
         v = SerialNumGen.next(self)
         return v & self._mask
 
+
 _serialGen = SerialNumGen()
+
+
 def serialNum():
     global _serialGen
     return next(_serialGen)
+
+
 def uniqueName(name):
     global _serialGen
     return '%s-%s' % (name, next(_serialGen))
+
 
 class EnumIter:
     def __init__(self, enum):
         self._values = list(enum._stringTable.keys())
         self._index = 0
+
     def __iter__(self):
         return self
+
     def __next__(self):
         if self._index >= len(self._values):
             raise StopIteration
         self._index += 1
         return self._values[self._index-1]
+
 
 class Enum:
     """Pass in list of strings or string of comma-separated strings.
@@ -2331,24 +2517,22 @@ class Enum:
     'red'
     """
 
-    if __debug__:
-        # chars that cannot appear within an item string.
-        InvalidChars = string.whitespace
-        def _checkValidIdentifier(item):
-            invalidChars = string.whitespace+string.punctuation
-            invalidChars = invalidChars.replace('_','')
-            invalidFirstChars = invalidChars+string.digits
-            if item[0] in invalidFirstChars:
-                raise SyntaxError("Enum '%s' contains invalid first char" %
-                                    item)
-            if not disjoint(item, invalidChars):
-                for char in item:
-                    if char in invalidChars:
-                        raise SyntaxError(
-                            "Enum\n'%s'\ncontains illegal char '%s'" %
-                            (item, char))
-            return 1
-        _checkValidIdentifier = staticmethod(_checkValidIdentifier)
+
+    def _checkValidIdentifier(item):
+        invalidChars = string.whitespace+string.punctuation
+        invalidChars = invalidChars.replace('_', '')
+        invalidFirstChars = invalidChars+string.digits
+        if item[0] in invalidFirstChars:
+            raise SyntaxError("Enum '%s' contains invalid first char" %
+                              item)
+        if not disjoint(item, invalidChars):
+            for char in item:
+                if char in invalidChars:
+                    raise SyntaxError(
+                        "Enum\n'%s'\ncontains illegal char '%s'" %
+                        (item, char))
+        return 1
+    _checkValidIdentifier = staticmethod(_checkValidIdentifier)
 
     def __init__(self, items, start=0):
         if type(items) == bytes:
@@ -2442,17 +2626,22 @@ class Enum:
 #           myNewClassX inherit from object and myClassX.
 #           IE: class myNewClassX(object, myClassX):
 ############################################################
+
+
 class Singleton(type):
     def __init__(cls, name, bases, dic):
         super(Singleton, cls).__init__(name, bases, dic)
-        cls.instance=None
+        cls.instance = None
+
     def __call__(cls, *args, **kw):
         if cls.instance is None:
-            cls.instance=super(Singleton, cls).__call__(*args, **kw)
+            cls.instance = super(Singleton, cls).__call__(*args, **kw)
         return cls.instance
+
 
 class SingletonError(ValueError):
     """ Used to indicate an inappropriate value for a Singleton."""
+
 
 def printListEnumGen(l):
     # log each individual item with a number in front of it
@@ -2466,29 +2655,36 @@ def printListEnumGen(l):
         print(format % (i, l[i]))
         yield None
 
+
 def printListEnum(l):
     for result in printListEnumGen(l):
         pass
+
 
 # base class for all Panda C++ objects
 # libdtoolconfig doesn't seem to have this, grab it off of PandaNode
 dtoolSuperBase = None
 
+
 def _getDtoolSuperBase():
     global dtoolSuperBase
     from panda3d.core import PandaNode
-    dtoolSuperBase = PandaNode('').__class__.__bases__[0].__bases__[0].__bases__[0]
+    dtoolSuperBase = PandaNode('').__class__.__bases__[
+        0].__bases__[0].__bases__[0]
     assert repr(dtoolSuperBase) == "<type 'libdtoolconfig.DTOOL_SUPER_BASE111'>" \
         or repr(dtoolSuperBase) == "<type 'libdtoolconfig.DTOOL_SUPPER_BASE111'>" \
         or repr(dtoolSuperBase) == "<type 'dtoolconfig.DTOOL_SUPER_BASE111'>"
 
+
 safeReprNotify = None
+
 
 def _getSafeReprNotify():
     global safeReprNotify
     from direct.directnotify.DirectNotifyGlobal import directNotify
     safeReprNotify = directNotify.newCategory("safeRepr")
     return safeReprNotify
+
 
 def safeRepr(obj):
     global dtoolSuperBase
@@ -2502,13 +2698,15 @@ def safeRepr(obj):
     if isinstance(obj, dtoolSuperBase):
         # repr of C++ object could crash, particularly if the object has been deleted
         # log that we're calling repr
-        safeReprNotify.info('calling repr on instance of %s.%s' % (obj.__class__.__module__, obj.__class__.__name__))
+        safeReprNotify.info('calling repr on instance of %s.%s' % (
+            obj.__class__.__module__, obj.__class__.__name__))
         sys.stdout.flush()
 
     try:
         return repr(obj)
     except:
         return '<** FAILED REPR OF %s instance at %s **>' % (obj.__class__.__name__, hex(id(obj)))
+
 
 def safeReprTypeOnFail(obj):
     global dtoolSuperBase
@@ -2528,7 +2726,6 @@ def safeReprTypeOnFail(obj):
         return '<** FAILED REPR OF %s instance at %s **>' % (obj.__class__.__name__, hex(id(obj)))
 
 
-
 def fastRepr(obj, maxLen=200, strFactor=10, _visitedIds=None):
     """ caps the length of iterable types, so very large objects will print faster.
     also prevents infinite recursion """
@@ -2540,7 +2737,7 @@ def fastRepr(obj, maxLen=200, strFactor=10, _visitedIds=None):
         if type(obj) in (tuple, list):
             s = ''
             s += {tuple: '(',
-                  list:  '[',}[type(obj)]
+                  list:  '[', }[type(obj)]
             if maxLen is not None and len(obj) > maxLen:
                 o = obj[:maxLen]
                 ellips = '...'
@@ -2554,7 +2751,7 @@ def fastRepr(obj, maxLen=200, strFactor=10, _visitedIds=None):
             _visitedIds.remove(id(obj))
             s += ellips
             s += {tuple: ')',
-                  list:  ']',}[type(obj)]
+                  list:  ']', }[type(obj)]
             return s
         elif type(obj) is dict:
             s = '{'
@@ -2589,7 +2786,9 @@ def fastRepr(obj, maxLen=200, strFactor=10, _visitedIds=None):
     except:
         return '<** FAILED REPR OF %s **>' % obj.__class__.__name__
 
+
 baseLine = {}
+
 
 def baseLineCheck():
     global baseLine
@@ -2600,6 +2799,7 @@ def baseLineCheck():
         baseLine[str(itype(i))] = 0
     for i in obj:
         baseLine[str(itype(i))] += 1
+
 
 def diffSinceBaseLine():
     import copy
@@ -2616,7 +2816,7 @@ def diffSinceBaseLine():
         else:
             since[i] = abs(since[i])
 
-    final = [(since[x],x) for x in since]
+    final = [(since[x], x) for x in since]
     final.sort()
     final.reverse()
     for i in final:
@@ -2640,6 +2840,8 @@ def _getr(slist, olist, seen):
             _getr(tl, olist, seen)
 
 # The public function.
+
+
 def get_all_objects():
     """Return a list of all live Python
     objects, not including the list itself."""
@@ -2654,6 +2856,7 @@ def get_all_objects():
     _getr(gcl, olist, seen)
     return olist
 
+
 def getIdList():
     baseList = get_all_objects()
     idList = {}
@@ -2665,6 +2868,7 @@ def getIdList():
 
 ftype = None
 
+
 def getTree(obj):
     global ftype
     if not ftype:
@@ -2673,10 +2877,11 @@ def getTree(obj):
     obj = None
     idList = getIdList()
     objList = [objId]
-    objTree = {objId:{}}
-    r_add_chain(objId, objList, objTree[objId], idList, 0 )
+    objTree = {objId: {}}
+    r_add_chain(objId, objList, objTree[objId], idList, 0)
 
     return convertTree(objTree, idList)
+
 
 def convertTree(objTree, idList):
     newTree = {}
@@ -2686,11 +2891,12 @@ def convertTree(objTree, idList):
         r_convertTree(objTree[key], newTree[obj], idList)
     return newTree
 
+
 def r_convertTree(oldTree, newTree, idList):
     for key in list(oldTree.keys()):
 
         obj = idList.get(key)
-        if(not obj):
+        if (not obj):
             continue
         obj = str(obj)[:100]
 
@@ -2704,17 +2910,17 @@ def pretty_print(tree):
         r_pretty_print(tree[name], 0)
 
 
-
 def r_pretty_print(tree, num):
-    num+=1
+    num += 1
     for name in list(tree.keys()):
-        print("  "*num,name)
-        r_pretty_print(tree[name],num)
+        print("  "*num, name)
+        r_pretty_print(tree[name], num)
+
 
 def r_add_chain(objId, objList, objTree, idList, num):
-    num+=1
+    num += 1
     obj = idList.get(objId)
-    if(not obj):
+    if (not obj):
         return
 
     refList = gc.get_referrers(obj)
@@ -2726,11 +2932,11 @@ def r_add_chain(objId, objList, objTree, idList, num):
             continue
         if refId in objList:
             continue
-        if(ref == idList):
+        if (ref == idList):
             continue
-        if(itype(ref) == ftype):
+        if (itype(ref) == ftype):
             continue
-        if(itype(ref) == itype(sys)):
+        if (itype(ref) == itype(sys)):
             continue
 
         objList.append(refId)
@@ -2739,7 +2945,6 @@ def r_add_chain(objId, objList, objTree, idList, num):
     refList = None
     for refId in objTree:
         r_add_chain(refId, objList, objTree[refId], idList, num)
-
 
 
 def tagRepr(obj, tag):
@@ -2752,22 +2957,27 @@ def tagRepr(obj, tag):
             return s
         oldRepr = Functor(stringer, repr(obj))
         stringer = None
-    obj.__repr__ = types.MethodType(Functor(reprWithTag, oldRepr, tag), obj, obj.__class__)
+    obj.__repr__ = types.MethodType(
+        Functor(reprWithTag, oldRepr, tag), obj, obj.__class__)
     reprWithTag = None
     return obj
+
 
 def tagWithCaller(obj):
     """add info about the caller of the caller"""
     tagRepr(obj, str(callerInfo(howFarBack=1)))
 
+
 def isDefaultValue(x):
     return x == type(x)()
+
 
 def notNone(A, B):
     # returns A if not None, B otherwise
     if A is None:
         return B
     return A
+
 
 def appendStr(obj, st):
     """adds a string onto the __str__ output of an instance"""
@@ -2779,9 +2989,11 @@ def appendStr(obj, st):
             return s
         oldStr = Functor(stringer, str(obj))
         stringer = None
-    obj.__str__ = types.MethodType(Functor(appendedStr, oldStr, st), obj, obj.__class__)
+    obj.__str__ = types.MethodType(
+        Functor(appendedStr, oldStr, st), obj, obj.__class__)
     appendedStr = None
     return obj
+
 
 # convenience shortcuts for __dev__ debugging
 # we don't have the __dev__ flag at this point
@@ -2789,6 +3001,7 @@ try:
     import pdb
     set_trace = pdb.set_trace
     # set_trace that can be asserted
+
     def setTrace():
         set_trace()
         return True
@@ -2804,14 +3017,17 @@ except:
 
 class ScratchPad:
     """empty class to stick values onto"""
+
     def __init__(self, **kArgs):
         for key, value in kArgs.items():
             setattr(self, key, value)
         self._keys = set(kArgs.keys())
+
     def add(self, **kArgs):
         for key, value in kArgs.items():
             setattr(self, key, value)
         self._keys.update(list(kArgs.keys()))
+
     def destroy(self):
         for key in self._keys:
             delattr(self, key)
@@ -2819,11 +3035,14 @@ class ScratchPad:
     # allow dict [] syntax
     def __getitem__(self, itemName):
         return getattr(self, itemName)
+
     def get(self, itemName, default=None):
         return getattr(self, itemName, default)
     # allow 'in'
+
     def __contains__(self, itemName):
         return itemName in self._keys
+
 
 class DestructiveScratchPad(ScratchPad):
     # automatically calls destroy() on elements passed to __init__
@@ -2833,13 +3052,16 @@ class DestructiveScratchPad(ScratchPad):
                 getattr(self, key).destroy()
             setattr(self, key, value)
         self._keys.update(list(kArgs.keys()))
+
     def destroy(self):
         for key in self._keys:
             getattr(self, key).destroy()
         ScratchPad.destroy(self)
 
+
 class Sync:
     _SeriesGen = SerialNumGen()
+
     def __init__(self, name, other=None):
         self._name = name
         if other is None:
@@ -2848,10 +3070,13 @@ class Sync:
         else:
             self._series = other._series
             self._value = other._value
+
     def invalidate(self):
         self._value = None
+
     def change(self):
         self._value += 1
+
     def sync(self, other):
         if (self._series != other._series) or (self._value != other._value):
             self._series = other._series
@@ -2859,26 +3084,32 @@ class Sync:
             return True
         else:
             return False
+
     def isSynced(self, other):
         return ((self._series == other._series) and
                 (self._value == other._value))
+
     def __repr__(self):
         return '%s(%s)<family=%s,value=%s>' % (self.__class__.__name__,
-                              self._name, self._series, self._value)
+                                               self._name, self._series, self._value)
+
 
 class RefCounter:
     def __init__(self, byId=False):
         self._byId = byId
         self._refCounts = {}
+
     def _getKey(self, item):
         if self._byId:
             key = id(item)
         else:
             key = item
+
     def inc(self, item):
         key = self._getKey(item)
         self._refCounts.setdefault(key, 0)
         self._refCounts[key] += 1
+
     def dec(self, item):
         """returns True if ref count has hit zero"""
         key = self._getKey(item)
@@ -2888,6 +3119,7 @@ class RefCounter:
             result = True
             del self._refCounts[key]
         return result
+
 
 def itype(obj):
     # version of type that gives more complete information about instance types
@@ -2906,6 +3138,7 @@ def itype(obj):
                                   str(obj.__class__))
         return t
 
+
 def deeptype(obj, maxLen=100, _visitedIds=None):
     if _visitedIds is None:
         _visitedIds = set()
@@ -2915,7 +3148,7 @@ def deeptype(obj, maxLen=100, _visitedIds=None):
     if t in (tuple, list):
         s = ''
         s += {tuple: '(',
-              list:  '[',}[type(obj)]
+              list:  '[', }[type(obj)]
         if maxLen is not None and len(obj) > maxLen:
             o = obj[:maxLen]
             ellips = '...'
@@ -2929,7 +3162,7 @@ def deeptype(obj, maxLen=100, _visitedIds=None):
         _visitedIds.remove(id(obj))
         s += ellips
         s += {tuple: ')',
-              list:  ']',}[type(obj)]
+              list:  ']', }[type(obj)]
         return s
     elif type(obj) is dict:
         s = '{'
@@ -2950,6 +3183,7 @@ def deeptype(obj, maxLen=100, _visitedIds=None):
         return s
     else:
         return str(itype(obj))
+
 
 def getNumberedTypedString(items, maxLen=5000, numPrefix=''):
     """get a string that has each item of the list on its own line,
@@ -2973,6 +3207,7 @@ def getNumberedTypedString(items, maxLen=5000, numPrefix=''):
             objStr = '%s%s' % (objStr[:(maxLen-len(snip))], snip)
         s += format % (i, itype(items[i]), objStr)
     return s
+
 
 def getNumberedTypedSortedString(items, maxLen=5000, numPrefix=''):
     """get a string that has each item of the list on its own line,
@@ -3003,6 +3238,7 @@ def getNumberedTypedSortedString(items, maxLen=5000, numPrefix=''):
         s += format % (i, itype(items[i]), strs[i])
     return s
 
+
 def getNumberedTypedSortedStringWithReferrersGen(items, maxLen=10000, numPrefix=''):
     """get a string that has each item of the list on its own line,
     the items are stringwise-sorted, the object's referrers are shown,
@@ -3031,6 +3267,7 @@ def getNumberedTypedSortedStringWithReferrersGen(items, maxLen=10000, numPrefix=
             objStr = '%s%s' % (objStr[:(maxLen-len(snip))], snip)
         yield format % (i, itype(items[i]), id(items[i]), objStr)
 
+
 def getNumberedTypedSortedStringWithReferrers(items, maxLen=10000, numPrefix=''):
     """get a string that has each item of the list on its own line,
     the items are stringwise-sorted, the object's referrers are shown,
@@ -3039,6 +3276,7 @@ def getNumberedTypedSortedStringWithReferrers(items, maxLen=10000, numPrefix='')
     for line in getNumberedTypedSortedStringWithReferrersGen(items, maxLen, numPrefix):
         s += '%s\n' % line
     return s
+
 
 def printNumberedTyped(items, maxLen=5000):
     """print out each item of the list on its own line,
@@ -3057,6 +3295,7 @@ def printNumberedTyped(items, maxLen=5000):
             objStr = '%s%s' % (objStr[:(maxLen-len(snip))], snip)
         print(format % (i, itype(items[i]), objStr))
 
+
 def printNumberedTypesGen(items, maxLen=5000):
     digits = 0
     n = len(items)
@@ -3069,14 +3308,17 @@ def printNumberedTypesGen(items, maxLen=5000):
         print(format % (i, itype(items[i])))
         yield None
 
+
 def printNumberedTypes(items, maxLen=5000):
     """print out the type of each item of the list on its own line,
     with each item numbered on the left from zero"""
     for result in printNumberedTypesGen(items, maxLen):
         yield result
 
+
 class DelayedCall:
     """ calls a func after a specified delay """
+
     def __init__(self, func, name=None, delay=None):
         if name is None:
             name = 'anonymous'
@@ -3087,25 +3329,32 @@ class DelayedCall:
         self._delay = delay
         self._finished = False
         self._addDoLater()
+
     def destroy(self):
         self._finished = True
         self._removeDoLater()
+
     def finish(self):
         if not self._finished:
             self._doCallback()
         self.destroy()
+
     def _addDoLater(self):
         taskMgr.doMethodLater(self._delay, self._doCallback, self._taskName)
+
     def _removeDoLater(self):
         taskMgr.remove(self._taskName)
+
     def _doCallback(self, task):
         self._finished = True
         func = self._func
         del self._func
         func()
 
+
 class FrameDelayedCall:
     """ calls a func after N frames """
+
     def __init__(self, name, callback, frames=None, cancelFunc=None):
         # checkFunc is optional; called every frame, if returns True, FrameDelay is cancelled
         # and callback is not called
@@ -3115,22 +3364,28 @@ class FrameDelayedCall:
         self._frames = frames
         self._callback = callback
         self._cancelFunc = cancelFunc
-        self._taskName = uniqueName('%s-%s' % (self.__class__.__name__, self._name))
+        self._taskName = uniqueName(
+            '%s-%s' % (self.__class__.__name__, self._name))
         self._finished = False
         self._startTask()
+
     def destroy(self):
         self._finished = True
         self._stopTask()
+
     def finish(self):
         if not self._finished:
             self._finished = True
             self._callback()
         self.destroy()
+
     def _startTask(self):
         taskMgr.add(self._frameTask, self._taskName)
         self._counter = 0
+
     def _stopTask(self):
         taskMgr.remove(self._taskName)
+
     def _frameTask(self, task):
         if self._cancelFunc and self._cancelFunc():
             self.destroy()
@@ -3141,15 +3396,18 @@ class FrameDelayedCall:
             return task.done
         return task.cont
 
+
 class DelayedFunctor:
     """ Waits for this object to be called, then calls supplied functor after a delay.
     Effectively inserts a time delay between the caller and the functor. """
+
     def __init__(self, functor, name=None, delay=None):
         self._functor = functor
         self._name = name
         # FunctionInterval requires __name__
         self.__name__ = self._name
         self._delay = delay
+
     def _callFunctor(self):
         cb = Functor(self._functor, *self._args, **self._kwArgs)
         del self._functor
@@ -3160,14 +3418,18 @@ class DelayedFunctor:
         del self._delayedCall
         del self.__name__
         cb()
+
     def __call__(self, *args, **kwArgs):
         self._args = args
         self._kwArgs = kwArgs
-        self._delayedCall = DelayedCall(self._callFunctor, self._name, self._delay)
+        self._delayedCall = DelayedCall(
+            self._callFunctor, self._name, self._delay)
+
 
 class SubframeCall:
     """Calls a callback at a specific time during the frame using the
     task system"""
+
     def __init__(self, functor, taskPriority, name=None):
         self._functor = functor
         self._name = name
@@ -3175,6 +3437,7 @@ class SubframeCall:
         taskMgr.add(self._doCallback,
                     self._taskName,
                     priority=taskPriority)
+
     def _doCallback(self, task):
         functor = self._functor
         del self._functor
@@ -3182,19 +3445,24 @@ class SubframeCall:
         del self._name
         self._taskName = None
         return task.done
+
     def cleanup(self):
         if (self._taskName):
             taskMgr.remove(self._taskName)
             self._taskName = None
 
+
 class ArgumentEater:
     def __init__(self, numToEat, func):
         self._numToEat = numToEat
         self._func = func
+
     def destroy(self):
         del self._func
+
     def __call__(self, *args, **kwArgs):
         self._func(*args[self._numToEat:], **kwArgs)
+
 
 class ClassTree:
     def __init__(self, instanceOrClass):
@@ -3207,6 +3475,7 @@ class ClassTree:
         for base in self._cls.__bases__:
             if base not in (object, type):
                 self._bases.append(ClassTree(base))
+
     def getAllClasses(self):
         # returns set of this class and all base classes
         classes = set()
@@ -3214,6 +3483,7 @@ class ClassTree:
         for base in self._bases:
             classes.update(base.getAllClasses())
         return classes
+
     def _getStr(self, indent=None, clsLeftAtIndent=None):
         # indent is how far to the right to indent (i.e. how many levels
         # deep in the hierarchy from the most-derived)
@@ -3253,10 +3523,11 @@ class ClassTree:
             newList.append(len(self._bases))
             bases = self._bases
             # print classes with fewer bases first
-            bases.sort(lambda x,y: len(x._bases)-len(y._bases))
+            bases.sort(lambda x, y: len(x._bases)-len(y._bases))
             for base in bases:
                 s += '\n%s' % base._getStr(indent+1, newList)
         return s
+
     def __repr__(self):
         return self._getStr()
 
@@ -3264,12 +3535,12 @@ class ClassTree:
 class PStatScope:
     collectors = {}
 
-    def __init__(self, level = None):
+    def __init__(self, level=None):
         self.levels = []
         if level:
             self.levels.append(level)
 
-    def copy(self, push = None):
+    def copy(self, push=None):
         c = PStatScope()
         c.levels = self.levels[:]
         if push:
@@ -3283,18 +3554,18 @@ class PStatScope:
         return ':'.join(self.levels)
 
     def push(self, level):
-        self.levels.append(level.replace('_',''))
+        self.levels.append(level.replace('_', ''))
 
     def pop(self):
         return self.levels.pop()
 
-    def start(self, push = None):
+    def start(self, push=None):
         if push:
             self.push(push)
             pass
         self.getCollector().start()
 
-    def stop(self, pop = False):
+    def stop(self, pop=False):
         self.getCollector().stop()
         if pop:
             self.pop()
@@ -3308,7 +3579,8 @@ class PStatScope:
         # print '  ',self.collectors[label]
         return self.collectors[label]
 
-def pstatcollect(scope, level = None):
+
+def pstatcollect(scope, level=None):
     def decorator(f):
         return f
 
@@ -3320,9 +3592,9 @@ def pstatcollect(scope, level = None):
 
         def decorator(f):
             def wrap(*args, **kw):
-                scope.start(push = (level or f.__name__))
+                scope.start(push=(level or f.__name__))
                 val = f(*args, **kw)
-                scope.stop(pop = True)
+                scope.stop(pop=True)
                 return val
             return wrap
 
@@ -3332,8 +3604,11 @@ def pstatcollect(scope, level = None):
 
     return decorator
 
+
 __report_indent = 0
-def report(types = [], prefix = '', xform = None, notifyFunc = None, dConfigParam = []):
+
+
+def report(types=[], prefix='', xform=None, notifyFunc=None, dConfigParam=[]):
     """
     This is a decorator generating function.  Use is similar to
     a @decorator, except you must be sure to call it as a function.
@@ -3381,9 +3656,8 @@ def report(types = [], prefix = '', xform = None, notifyFunc = None, dConfigPara
     dConfigParam: A list of Config.prc string variables.
                   By default the report will always print.  If you
                   specify this param, it will only print if one of the
-                  specified config strings resolve to True.
+                  specified panda3d strings resolve to True.
     """
-
 
     def indent(str):
         global __report_indent
@@ -3404,12 +3678,12 @@ def report(types = [], prefix = '', xform = None, notifyFunc = None, dConfigPara
             doPrint = True
         else:
 
-            if not isinstance(dConfigParam, (list,tuple)):
+            if not isinstance(dConfigParam, (list, tuple)):
                 dConfigParams = (dConfigParam,)
             else:
                 dConfigParams = dConfigParam
 
-            dConfigParamList = [param for param in dConfigParams \
+            dConfigParamList = [param for param in dConfigParams
                                 if config.GetBool('want-%s-report' % (param,), 0)]
 
             doPrint = bool(dConfigParamList)
@@ -3438,7 +3712,7 @@ def report(types = [], prefix = '', xform = None, notifyFunc = None, dConfigPara
     from direct.distributed.ClockDelta import globalClockDelta
 
     def decorator(f):
-        def wrap(*args,**kwargs):
+        def wrap(*args, **kwargs):
             if args:
                 rArgs = [args[0].__class__.__name__ + ', ']
             else:
@@ -3446,20 +3720,19 @@ def report(types = [], prefix = '', xform = None, notifyFunc = None, dConfigPara
 
             if 'args' in types:
                 rArgs += [repr(x)+', ' for x in args[1:]] + \
-                         [ x + ' = ' + '%s, ' % repr(y) for x,y in list(kwargs.items())]
+                         [x + ' = ' + '%s, ' %
+                             repr(y) for x, y in list(kwargs.items())]
 
             if not rArgs:
                 rArgs = '()'
             else:
-                rArgs = '(' + reduce(str.__add__,rArgs)[:-2] + ')'
-
+                rArgs = '(' + reduce(str.__add__, rArgs)[:-2] + ')'
 
             outStr = '%s%s' % (f.__name__, rArgs)
 
             # Insert prefix place holder, if needed
             if prefixes:
                 outStr = '%%s %s' % (outStr,)
-
 
             if 'module' in types:
                 outStr = '%s {M:%s}' % (outStr, f.__module__.split('.')[-1])
@@ -3471,8 +3744,8 @@ def report(types = [], prefix = '', xform = None, notifyFunc = None, dConfigPara
                 outStr = '%-8.3f : %s' % (globalClock.getFrameTime(), outStr)
 
             if 'deltaStamp' in types:
-                outStr = '%-8.2f : %s' % (globalClock.getRealTime() - \
-                                         globalClockDelta.delta, outStr)
+                outStr = '%-8.2f : %s' % (globalClock.getRealTime() -
+                                          globalClockDelta.delta, outStr)
             if 'avLocation' in types:
                 outStr = '%s : %s' % (outStr, str(localAvatar.getLocation()))
 
@@ -3502,7 +3775,7 @@ def report(types = [], prefix = '', xform = None, notifyFunc = None, dConfigPara
             rVal = None
             try:
                 __report_indent += 1
-                rVal = f(*args,**kwargs)
+                rVal = f(*args, **kwargs)
             finally:
                 __report_indent -= 1
                 if rVal is not None:
@@ -3518,11 +3791,13 @@ def report(types = [], prefix = '', xform = None, notifyFunc = None, dConfigPara
         return wrap
     return decorator
 
+
 def getBase():
     try:
         return base
     except:
         return simbase
+
 
 def getRepository():
     try:
@@ -3530,7 +3805,9 @@ def getRepository():
     except:
         return simbase.air
 
+
 exceptionLoggedNotify = None
+
 
 def exceptionLogged(append=True):
     """decorator that outputs the function name and all arguments
@@ -3558,6 +3835,7 @@ def exceptionLogged(append=True):
         if exceptionLoggedNotify is None:
             from direct.directnotify.DirectNotifyGlobal import directNotify
             exceptionLoggedNotify = directNotify.newCategory("ExceptionLogged")
+
         def _exceptionLogged(*args, **kArgs):
             try:
                 return f(*args, **kArgs)
@@ -3586,17 +3864,23 @@ def exceptionLogged(append=True):
 # class 'decorator' that records the stack at the time of creation
 # be careful with this, it creates a StackTrace, and that can take a
 # lot of CPU
+
+
 def recordCreationStack(cls):
     if not hasattr(cls, '__init__'):
         raise 'recordCreationStack: class \'%s\' must define __init__' % cls.__name__
     cls.__moved_init__ = cls.__init__
+
     def __recordCreationStack_init__(self, *args, **kArgs):
         self._creationStackTrace = StackTrace(start=1)
         return self.__moved_init__(*args, **kArgs)
+
     def getCreationStackTrace(self):
         return self._creationStackTrace
+
     def getCreationStackTraceCompactStr(self):
         return self._creationStackTrace.compact()
+
     def printCreationStackTrace(self):
         print(self._creationStackTrace)
     cls.__init__ = __recordCreationStack_init__
@@ -3607,16 +3891,22 @@ def recordCreationStack(cls):
 
 # like recordCreationStack but stores the stack as a compact stack list-of-strings
 # scales well for memory usage
+
+
 def recordCreationStackStr(cls):
     if not hasattr(cls, '__init__'):
         raise 'recordCreationStackStr: class \'%s\' must define __init__' % cls.__name__
     cls.__moved_init__ = cls.__init__
+
     def __recordCreationStackStr_init__(self, *args, **kArgs):
         # store as list of strings to conserve memory
-        self._creationStackTraceStrLst = StackTrace(start=1).compact().split(',')
+        self._creationStackTraceStrLst = StackTrace(
+            start=1).compact().split(',')
         return self.__moved_init__(*args, **kArgs)
+
     def getCreationStackTraceCompactStr(self):
         return ','.join(self._creationStackTraceStrLst)
+
     def printCreationStackTrace(self):
         print(','.join(self._creationStackTraceStrLst))
     cls.__init__ = __recordCreationStackStr_init__
@@ -3653,60 +3943,69 @@ def logMethodCalls(cls):
     __logMethodCall__ = None
     return cls
 
+
 # http://en.wikipedia.org/wiki/Golden_ratio
 GoldenRatio = (1. + math.sqrt(5.)) / 2.
+
+
 class GoldenRectangle:
     @staticmethod
     def getLongerEdge(shorter):
         return shorter * GoldenRatio
+
     @staticmethod
     def getShorterEdge(longer):
         return longer / GoldenRatio
 
+
 class HotkeyBreaker:
-    def __init__(self,breakKeys = []):
+    def __init__(self, breakKeys=[]):
         from direct.showbase.DirectObject import DirectObject
         self.do = DirectObject()
         self.breakKeys = {}
-        if not isinstance(breakKeys, (list,tuple)):
+        if not isinstance(breakKeys, (list, tuple)):
             breakKeys = (breakKeys,)
         for key in breakKeys:
             self.addBreakKey(key)
 
-    def addBreakKey(self,breakKey):
+    def addBreakKey(self, breakKey):
         if __dev__:
-            self.do.accept(breakKey,self.breakFunc,extraArgs = [breakKey])
+            self.do.accept(breakKey, self.breakFunc, extraArgs=[breakKey])
 
-    def removeBreakKey(self,breakKey):
+    def removeBreakKey(self, breakKey):
         if __dev__:
             self.do.ignore(breakKey)
 
-    def breakFunc(self,breakKey):
+    def breakFunc(self, breakKey):
         if __dev__:
             self.breakKeys[breakKey] = True
 
-    def setBreakPt(self, breakKey = None, persistent = False):
+    def setBreakPt(self, breakKey=None, persistent=False):
         if __dev__:
             if not breakKey:
-                import pdb;pdb.set_trace()
+                import pdb
+                pdb.set_trace()
                 return True
             else:
-                if self.breakKeys.get(breakKey,False):
+                if self.breakKeys.get(breakKey, False):
                     if not persistent:
                         self.breakKeys.pop(breakKey)
-                    import pdb;pdb.set_trace()
+                    import pdb
+                    pdb.set_trace()
                     return True
         return True
 
     def clearBreakPt(self, breakKey):
         if __dev__:
-            return bool(self.breakKeys.pop(breakKey,None))
+            return bool(self.breakKeys.pop(breakKey, None))
+
 
 def nullGen():
     # generator that ends immediately
     if False:
         # yield that never runs but still exists, making this func a generator
         yield None
+
 
 def loopGen(l):
     # generator that yields the items of an iterable object forever
@@ -3718,6 +4017,7 @@ def loopGen(l):
     # don't leak
     _gen = None
     return gen
+
 
 def makeFlywheelGen(objects, countList=None, countFunc=None, scale=None):
     # iterates and finally yields a flywheel generator object
@@ -3756,6 +4056,7 @@ def makeFlywheelGen(objects, countList=None, countFunc=None, scale=None):
     # create the flywheel generator
     yield flywheel(index2objectAndCount)
 
+
 def flywheel(*args, **kArgs):
     # create a flywheel generator
     # see arguments and comments in flywheelGen above
@@ -3770,8 +4071,9 @@ def flywheel(*args, **kArgs):
         pass
     return flywheel
 
+
 if __debug__ and __name__ == '__main__':
-    f = flywheel(['a','b','c','d'], countList=[11,20,3,4])
+    f = flywheel(['a', 'b', 'c', 'd'], countList=[11, 20, 3, 4])
     obj2count = {}
     for obj in f:
         obj2count.setdefault(obj, 0)
@@ -3781,7 +4083,7 @@ if __debug__ and __name__ == '__main__':
     assert obj2count['c'] == 3
     assert obj2count['d'] == 4
 
-    f = flywheel([1,2,3,4], countFunc=lambda x: x*2)
+    f = flywheel([1, 2, 3, 4], countFunc=lambda x: x*2)
     obj2count = {}
     for obj in f:
         obj2count.setdefault(obj, 0)
@@ -3791,7 +4093,7 @@ if __debug__ and __name__ == '__main__':
     assert obj2count[3] == 6
     assert obj2count[4] == 8
 
-    f = flywheel([1,2,3,4], countFunc=lambda x: x, scale = 3)
+    f = flywheel([1, 2, 3, 4], countFunc=lambda x: x, scale=3)
     obj2count = {}
     for obj in f:
         obj2count.setdefault(obj, 0)
@@ -3801,31 +4103,37 @@ if __debug__ and __name__ == '__main__':
     assert obj2count[3] == 3 * 3
     assert obj2count[4] == 4 * 3
 
+
 def quickProfile(name="unnamed"):
     import pstats
+
     def profileDecorator(f):
-        if(not config.GetBool("use-profiler",0)):
+        if (not config.GetBool("use-profiler", 0)):
             return f
+
         def _profiled(*args, **kArgs):
             # must do this in here because we don't have base/simbase
             # at the time that PythonUtil is loaded
-            if(not config.GetBool("profile-debug",0)):
-                #dumb timings
-                st=globalClock.getRealTime()
-                f(*args,**kArgs)
-                s=globalClock.getRealTime()-st
-                print("Function %s.%s took %s seconds"%(f.__module__, f.__name__,s))
+            if (not config.GetBool("profile-debug", 0)):
+                # dumb timings
+                st = globalClock.getRealTime()
+                f(*args, **kArgs)
+                s = globalClock.getRealTime()-st
+                print("Function %s.%s took %s seconds" %
+                      (f.__module__, f.__name__, s))
             else:
-                import profile as prof, pstats
-                #detailed profile, stored in base.stats under (
-                if(not hasattr(base,"stats")):
-                    base.stats={}
-                if(not base.stats.get(name)):
-                    base.stats[name]=[]
+                import profile as prof
+                import pstats
+                # detailed profile, stored in base.stats under (
+                if (not hasattr(base, "stats")):
+                    base.stats = {}
+                if (not base.stats.get(name)):
+                    base.stats[name] = []
 
-                prof.runctx('f(*args, **kArgs)', {'f':f,'args':args,'kArgs':kArgs},None,"t.prof")
-                s=pstats.Stats("t.prof")
-                #p=hotshot.Profile("t.prof")
+                prof.runctx(
+                    'f(*args, **kArgs)', {'f': f, 'args': args, 'kArgs': kArgs}, None, "t.prof")
+                s = pstats.Stats("t.prof")
+                # p=hotshot.Profile("t.prof")
                 #p.runctx('f(*args, **kArgs)', {'f':f,'args':args,'kArgs':kArgs},None)
                 #s = hotshot.stats.load("t.prof")
                 s.strip_dirs()
@@ -3836,21 +4144,23 @@ def quickProfile(name="unnamed"):
         return _profiled
     return profileDecorator
 
+
 def getTotalAnnounceTime():
-    td=0
+    td = 0
     for objs in list(base.stats.values()):
         for stat in objs:
-            td+=getAnnounceGenerateTime(stat)
+            td += getAnnounceGenerateTime(stat)
     return td
 
+
 def getAnnounceGenerateTime(stat):
-    val=0
-    stats=stat.stats
+    val = 0
+    stats = stat.stats
     for i in list(stats.keys()):
-        if(i[2]=="announceGenerate"):
-            newVal=stats[i][3]
-            if(newVal>val):
-                val=newVal
+        if (i[2] == "announceGenerate"):
+            newVal = stats[i][3]
+            if (newVal > val):
+                val = newVal
     return val
 
 
@@ -3860,6 +4170,7 @@ def choice(condition, ifTrue, ifFalse):
         return ifTrue
     else:
         return ifFalse
+
 
 class MiniLog:
     def __init__(self, name):
@@ -3873,12 +4184,12 @@ class MiniLog:
 
     def enterFunction(self, funcName, *args, **kw):
         rArgs = [repr(x)+', ' for x in args] + \
-                [ x + ' = ' + '%s, ' % repr(y) for x,y in list(kw.items())]
+                [x + ' = ' + '%s, ' % repr(y) for x, y in list(kw.items())]
 
         if not rArgs:
             rArgs = '()'
         else:
-            rArgs = '(' + reduce(str.__add__,rArgs)[:-2] + ')'
+            rArgs = '(' + reduce(str.__add__, rArgs)[:-2] + ')'
 
         line = '%s%s' % (funcName, rArgs)
         self.appendFunctionCall(line)
@@ -3904,6 +4215,7 @@ class MiniLog:
         self.lines = []
         return outStr
 
+
 class MiniLogSentry:
     def __init__(self, log, funcName, *args, **kw):
         self.log = log
@@ -3915,13 +4227,16 @@ class MiniLogSentry:
             self.log.exitFunction()
         del self.log
 
+
 def logBlock(id, msg):
     print('<< LOGBLOCK(%03d)' % id)
     print(str(msg))
     print('/LOGBLOCK(%03d) >>' % id)
 
+
 class HierarchyException(Exception):
     JOSWILSO = 0
+
     def __init__(self, owner, description):
         self.owner = owner
         self.desc = description
@@ -3933,6 +4248,8 @@ class HierarchyException(Exception):
         return 'HierarchyException(%s)' % (self.owner, )
 
 # __dev__ is not defined at import time, call this after it's defined
+
+
 def recordFunctorCreationStacks():
     global Functor
     config = DConfig
@@ -3942,6 +4259,7 @@ def recordFunctorCreationStacks():
             Functor = recordCreationStackStr(Functor)
             Functor._functorCreationStacksRecorded = True
             Functor.__call__ = Functor._exceptionLoggedCreationStack__call__
+
 
 def formatTimeCompact(seconds):
     # returns string in format '1d3h22m43s'
@@ -3963,6 +4281,7 @@ def formatTimeCompact(seconds):
     result += '%ss' % seconds
     return result
 
+
 if __debug__ and __name__ == '__main__':
     ftc = formatTimeCompact
     assert ftc(0) == '0s'
@@ -3973,6 +4292,7 @@ if __debug__ and __name__ == '__main__':
     assert ftc(24*60*60) == '1d0h0m0s'
     assert ftc(24*60*60 + 2*60*60 + 34*60 + 12) == '1d2h34m12s'
     del ftc
+
 
 def formatTimeExact(seconds):
     # like formatTimeCompact but leaves off '0 seconds', '0 minutes' etc. for
@@ -3999,6 +4319,7 @@ def formatTimeExact(seconds):
         result += '%ss' % seconds
     return result
 
+
 if __debug__ and __name__ == '__main__':
     fte = formatTimeExact
     assert fte(0) == '0s'
@@ -4011,10 +4332,12 @@ if __debug__ and __name__ == '__main__':
     assert fte((24*60*60) + (2 * 60)) == '1d0h2m'
     del fte
 
+
 class AlphabetCounter:
     # object that produces 'A', 'B', 'C', ... 'AA', 'AB', etc.
     def __init__(self):
         self._curCounter = ['A']
+
     def __next__(self):
         result = ''.join([c for c in self._curCounter])
         index = -1
@@ -4029,7 +4352,7 @@ class AlphabetCounter:
             self._curCounter[index] = nextChar
             if carry:
                 if (-index) == len(self._curCounter):
-                    self._curCounter = ['A',] + self._curCounter
+                    self._curCounter = ['A', ] + self._curCounter
                     break
                 else:
                     index -= 1
@@ -4038,21 +4361,22 @@ class AlphabetCounter:
                 break
         return result
 
+
 if __debug__ and __name__ == '__main__':
     def testAlphabetCounter():
         tempList = []
         ac = AlphabetCounter()
         for i in range(26*3):
             tempList.append(next(ac))
-        assert tempList == [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-                            'AA','AB','AC','AD','AE','AF','AG','AH','AI','AJ','AK','AL','AM','AN','AO','AP','AQ','AR','AS','AT','AU','AV','AW','AX','AY','AZ',
-                            'BA','BB','BC','BD','BE','BF','BG','BH','BI','BJ','BK','BL','BM','BN','BO','BP','BQ','BR','BS','BT','BU','BV','BW','BX','BY','BZ',]
+        assert tempList == ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+                            'AA', 'AB', 'AC', 'AD', 'AE', 'AF', 'AG', 'AH', 'AI', 'AJ', 'AK', 'AL', 'AM', 'AN', 'AO', 'AP', 'AQ', 'AR', 'AS', 'AT', 'AU', 'AV', 'AW', 'AX', 'AY', 'AZ',
+                            'BA', 'BB', 'BC', 'BD', 'BE', 'BF', 'BG', 'BH', 'BI', 'BJ', 'BK', 'BL', 'BM', 'BN', 'BO', 'BP', 'BQ', 'BR', 'BS', 'BT', 'BU', 'BV', 'BW', 'BX', 'BY', 'BZ', ]
         ac = AlphabetCounter()
-        num  = 26 # A-Z
-        num += (26*26) # AA-ZZ
-        num += 26 # AAZ
-        num += 1 # ABA
-        num += 2 # ABC
+        num = 26  # A-Z
+        num += (26*26)  # AA-ZZ
+        num += 26  # AAZ
+        num += 1  # ABA
+        num += 2  # ABC
         for i in range(num):
             x = next(ac)
         assert x == 'ABC'
@@ -4063,14 +4387,16 @@ globalPdb = None
 
 traceCalled = False
 
+
 def setupPdb():
-    import pdb;
+    import pdb
+
     class pandaPdb(pdb.Pdb):
         def stop_here(self, frame):
             global traceCalled
-            if(traceCalled):
+            if (traceCalled):
                 result = pdb.Pdb.stop_here(self, frame)
-                if(result == True):
+                if (result == True):
                     traceCalled = False
                 return result
             if frame is self.stopframe:
@@ -4081,6 +4407,7 @@ def setupPdb():
     globalPdb.reset()
     sys.settrace(globalPdb.trace_dispatch)
 
+
 def pandaTrace():
     if __dev__:
         if not globalPdb:
@@ -4089,16 +4416,17 @@ def pandaTrace():
         globalPdb.set_trace(sys._getframe().f_back)
         traceCalled = True
 
+
 packageMap = {
-    "toontown":"$TOONTOWN",
-    "direct":"$DIRECT",
-    "otp":"$OTP",
-    "pirates":"$PIRATES",
+    "toontown": "$TOONTOWN",
+    "direct": "$DIRECT",
+    "otp": "$OTP",
+    "pirates": "$PIRATES",
 }
 
 
-#assuming . dereferncing for nice linking to imports
-def pandaBreak(dotpath, linenum, temporary = 0, cond = None):
+# assuming . dereferncing for nice linking to imports
+def pandaBreak(dotpath, linenum, temporary=0, cond=None):
     if __dev__:
         from panda3d.core import Filename
         if not globalPdb:
@@ -4107,23 +4435,28 @@ def pandaBreak(dotpath, linenum, temporary = 0, cond = None):
         root = Filename.expandFrom(packageMap[dirs[0]]).toOsSpecific()
         filename = root + "\\src"
         for d in dirs[1:]:
-            filename="%s\\%s"%(filename,d)
+            filename = "%s\\%s" % (filename, d)
         print(filename)
         globalPdb.set_break(filename+".py", linenum, temporary, cond)
+
 
 class Default:
     # represents 'use the default value'
     # useful for keyword arguments to virtual methods
     pass
 
+
 superLogFile = None
-def startSuperLog(customFunction = None):
+
+
+def startSuperLog(customFunction=None):
     global superLogFile
 
-    if(not superLogFile):
+    if (not superLogFile):
         superLogFile = open("c:\\temp\\superLog.txt", "w")
-        def trace_dispatch(a,b,c):
-            if(b=='call' and a.f_code.co_name != '?' and a.f_code.co_name.find("safeRepr")<0):
+
+        def trace_dispatch(a, b, c):
+            if (b == 'call' and a.f_code.co_name != '?' and a.f_code.co_name.find("safeRepr") < 0):
                 vars = dict(a.f_locals)
                 if 'self' in vars:
                     del vars['self']
@@ -4133,31 +4466,33 @@ def startSuperLog(customFunction = None):
                     vars[i] = safeReprTypeOnFail(vars[i])
 
                 if customFunction:
-                    superLogFile.write( "before = %s\n"%customFunction())
+                    superLogFile.write("before = %s\n" % customFunction())
 
-                superLogFile.write( "%s(%s):%s:%s\n"%(a.f_code.co_filename.split("\\")[-1],a.f_code.co_firstlineno, a.f_code.co_name, vars))
+                superLogFile.write("%s(%s):%s:%s\n" % (a.f_code.co_filename.split(
+                    "\\")[-1], a.f_code.co_firstlineno, a.f_code.co_name, vars))
 
                 if customFunction:
-                    superLogFile.write( "after = %s\n"%customFunction())
-
-
+                    superLogFile.write("after = %s\n" % customFunction())
 
                 return trace_dispatch
         sys.settrace(trace_dispatch)
 
+
 def endSuperLog():
     global superLogFile
-    if(superLogFile):
+    if (superLogFile):
         sys.settrace(None)
         superLogFile.close()
         superLogFile = None
 
+
 def isInteger(n):
     return type(n) in (int, int)
 
+
 def configIsToday(configName):
     # TODO: replace usage of strptime with something else
-    # returns true if config string is a valid representation of today's date
+    # returns true if panda3d string is a valid representation of today's date
     today = time.localtime()
     confStr = config.GetString(configName, '')
     for format in ('%m/%d/%Y', '%m-%d-%Y', '%m.%d.%Y'):
@@ -4168,15 +4503,17 @@ def configIsToday(configName):
         else:
             if (confDate.tm_year == today.tm_year and
                 confDate.tm_mon == today.tm_mon and
-                confDate.tm_mday == today.tm_mday):
+                    confDate.tm_mday == today.tm_mday):
                 return True
     return False
+
 
 def typeName(o):
     if hasattr(o, '__class__'):
         return o.__class__.__name__
     else:
         return o.__name__
+
 
 def safeTypeName(o):
     try:
@@ -4189,12 +4526,14 @@ def safeTypeName(o):
         pass
     return '<failed safeTypeName()>'
 
+
 def histogramDict(l):
     d = {}
     for e in l:
         d.setdefault(e, 0)
         d[e] += 1
     return d
+
 
 def unescapeHtmlString(s):
     # converts %## to corresponding character
@@ -4214,11 +4553,13 @@ def unescapeHtmlString(s):
         result += char
     return result
 
+
 if __debug__ and __name__ == '__main__':
     assert unescapeHtmlString('asdf') == 'asdf'
     assert unescapeHtmlString('as+df') == 'as df'
     assert unescapeHtmlString('as%32df') == 'as2df'
     assert unescapeHtmlString('asdf%32') == 'asdf2'
+
 
 def repeatableRepr(obj):
     if type(obj) is dict:
@@ -4242,9 +4583,11 @@ def repeatableRepr(obj):
         return repeatableRepr(l)
     return repr(obj)
 
+
 if __debug__ and __name__ == '__main__':
     assert repeatableRepr({1: 'a', 2: 'b'}) == repeatableRepr({2: 'b', 1: 'a'})
-    assert repeatableRepr(set([1,2,3])) == repeatableRepr(set([3,2,1]))
+    assert repeatableRepr(set([1, 2, 3])) == repeatableRepr(set([3, 2, 1]))
+
 
 def u2ascii(s):
     # Unicode -> ASCII
@@ -4253,6 +4596,7 @@ def u2ascii(s):
     else:
         return str(s)
 
+
 def unicodeUtf8(s):
     # * -> Unicode UTF-8
     if type(s) is str:
@@ -4260,12 +4604,15 @@ def unicodeUtf8(s):
     else:
         return str(str(s), 'utf-8')
 
+
 def encodedUtf8(s):
     # * -> 8-bit-encoded UTF-8
     return unicodeUtf8(s).encode('utf-8')
 
+
 class PriorityCallbacks:
     """ manage a set of prioritized callbacks, and allow them to be invoked in order of priority """
+
     def __init__(self):
         self._callbacks = []
 
@@ -4287,12 +4634,16 @@ class PriorityCallbacks:
         for priority, callback in self._callbacks:
             callback()
 
+
 if __debug__ and __name__ == '__main__':
     l = []
+
     def a(l=l):
         l.append('a')
+
     def b(l=l):
         l.append('b')
+
     def c(l=l):
         l.append('c')
     pc = PriorityCallbacks()
@@ -4334,6 +4685,7 @@ if __debug__ and __name__ == '__main__':
     del pc
     del bItem
 
+
 def _backwardsControlEffect(amount, anim, actor):
     """
     Because LerpFunctionIntervals expect the argument they operate on to be the
@@ -4345,6 +4697,7 @@ def _backwardsControlEffect(amount, anim, actor):
     :param actor: The actor to apply the animation to
     """
     actor.setControlEffect(anim, amount)
+
 
 def blendAnimation(duration, fromAnim, toAnim, actor):
     """
@@ -4358,11 +4711,14 @@ def blendAnimation(duration, fromAnim, toAnim, actor):
     :return: Smooth transition between the two animations.
     """
     return Parallel(
-        LerpFunctionInterval(_backwardsControlEffect, fromData = 1.0, toData = 0.0, duration = duration, blendType = 'easeInOut', extraArgs = [fromAnim, actor]),
-        LerpFunctionInterval(_backwardsControlEffect, fromData = 0.0, toData = 1.0, duration = duration, blendType = 'easeInOut', extraArgs = [toAnim, actor])
+        LerpFunctionInterval(_backwardsControlEffect, fromData=1.0, toData=0.0,
+                             duration=duration, blendType='easeInOut', extraArgs=[fromAnim, actor]),
+        LerpFunctionInterval(_backwardsControlEffect, fromData=0.0, toData=1.0,
+                             duration=duration, blendType='easeInOut', extraArgs=[toAnim, actor])
     )
 
-class deprecated(object): # STYLE: do not touch -- this is a decorator, not a standard class
+
+class deprecated(object):  # STYLE: do not touch -- this is a decorator, not a standard class
     def __init__(self, reason):
         if inspect.isclass(reason) or inspect.isfunction(reason):
             reason = "No additional information given"
@@ -4390,27 +4746,33 @@ class deprecated(object): # STYLE: do not touch -- this is a decorator, not a st
 
         @functools.wraps(cls_or_func)
         def new_func(*args, **kwargs):
-            warnings.simplefilter('always', DeprecationWarning)  # turn off filter
-            warnings.warn_explicit(msg, category=DeprecationWarning, filename=filename, lineno=lineno)
-            warnings.simplefilter('default', DeprecationWarning)  # reset filter
+            warnings.simplefilter(
+                'always', DeprecationWarning)  # turn off filter
+            warnings.warn_explicit(
+                msg, category=DeprecationWarning, filename=filename, lineno=lineno)
+            warnings.simplefilter(
+                'default', DeprecationWarning)  # reset filter
             return cls_or_func(*args, **kwargs)
 
         return new_func
+
 
 def isClient():
     if hasattr(builtins, 'simbase') and not hasattr(builtins, 'base'):
         return False
     return True
 
+
 def quantize(value, divisor):
     return float(int(value * int(divisor))) / int(divisor)
+
 
 def quantizeVec(vec, divisor):
     vec[0] = quantize(vec[0], divisor)
     vec[1] = quantize(vec[1], divisor)
     vec[2] = quantize(vec[2], divisor)
 
-import builtins
+
 builtins.Functor = Functor
 builtins.Stack = Stack
 builtins.Queue = Queue
