@@ -14,7 +14,7 @@ parser.add_argument('--src-dir', default='..',
                     help='The directory of the source code.')
 
 #Argument for Python Modules to be Included
-parser.add_argument('modules', nargs='*', default=['otp', 'toontown'],
+parser.add_argument('modules', nargs='*', default=['otp', 'toontown', 'libotp', 'libtoontown'],
                     help='The modules to be included in the build.')
 
 #Argument for the build directory. This is not the final directory this is where the code is temporarely stored.
