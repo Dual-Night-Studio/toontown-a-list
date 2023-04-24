@@ -27,7 +27,7 @@ parser.add_argument('modules', nargs='*', default=['otp', 'toontown', 'dependenc
 #Argument for the Panda3D Directory
 #If user is on Windows this is the default directory
 if platform.system() == 'Windows':               
-    parser.add_argument('--panda3d-dir', default='S:/Software/Panda3D/Panda3D4TIA',
+    parser.add_argument('--panda3d-dir', default='S:/Panda3D/Panda3D4TIA',
                         help='The path to the Panda3D build to use for this distribution.')
 #If user is on macOS this is the default directory                        
 if platform.system() == 'Darwin':

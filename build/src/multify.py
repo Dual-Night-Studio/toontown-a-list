@@ -23,5 +23,5 @@ for phase in os.listdir('.'):
     filename = phase + '.mf'
     print('Writing ', filename)
     filepath = os.path.join(dest, filename)
-    os.system('S:/Software/Panda3D/Panda3D4TIA/bin/multify -c -f "%s" "%s"' % (filepath, phase))
+    os.system('S:/Panda3D/Panda3D4TIA/bin/multify -c -f "%s" "%s"' % (filepath, phase))
 print ('Done Building Phase Files')
