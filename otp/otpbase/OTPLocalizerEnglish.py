@@ -4,7 +4,7 @@ from .OTPGlobals import *
 
 lTheBrrrgh = 'The Brrrgh'
 lDaisyGardens = 'Daisy Gardens'
-lDonaldsDock = "Donald's Dock"
+lDonaldsDock = "Dusty Docks"
 lDonaldsDreamland = "Donald's Dreamland"
 lMinniesMelodyland = "Minnie's Melodyland"
 lToontownCentral = 'Toontown Central'

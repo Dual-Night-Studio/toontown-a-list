@@ -69,7 +69,7 @@ JailbirdDale = 'JailbirdDale'
 PoliceChip = 'PoliceChip'
 lTheBrrrgh = 'The Brrrgh'
 lDaisyGardens = 'Daisy Gardens'
-lDonaldsDock = "Donald's Dock"
+lDonaldsDock = "Dusty Docks"
 lDonaldsDreamland = "Donald's Dreamland"
 lMinniesMelodyland = "Minnie's Melodyland"
 lToontownCentral = 'Toontown Central'
@@ -3643,7 +3643,7 @@ SuperGoofyChatter = (['Welcome to my Super Speedway!',
   "It's fun to dress up for Halloween!",
   'I hope you are enjoying our Halloween fun!'], ['Gotta fly!',
   'Hi-Ho and away I go!',
-  "Should I fly or drive to Donald's Dock?",
+  "Should I fly or drive to Dusty Docks?",
   'Gawrsh, have a Happy Halloween!'])
 DonaldChatter = (['Welcome to Dreamland.', "Hi, my name is %s. What's yours?" % Donald], ['Sometimes this place gives me the creeps.',
   'Be sure and try the maze in ' + lDaisyGardens + '.',
@@ -4342,7 +4342,7 @@ MusicGsRaceRr = 'Route 66'
 MusicGzSz = 'The Putt-Putt Polka'
 MusicMmSz = 'Dancing in the Streets'
 MusicMmSzActivity = 'Here Comes Treble'
-MusicDdNbrhood = "Donald's Dock"
+MusicDdNbrhood = "Dusty Docks"
 MusicGsKartshop = 'Mr. Goofywrench'
 MusicDdSzActivity = 'Sea Shanty'
 MusicEncntrGeneralBgIndoor = 'Building Excitement'
