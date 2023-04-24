@@ -2,5 +2,5 @@
 title Toontown Fantasy Builder
 cd ..
 call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsall.bat" x64 %*
-"C:\OpenPanda\python\python.exe" -m src.make
+"S:\Software\Panda3D\Panda3D4TIA\python\python.exe" -m src.make
 PAUSE
