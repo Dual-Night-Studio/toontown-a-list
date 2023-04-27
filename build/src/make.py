@@ -21,7 +21,7 @@ parser.add_argument('--main-module', default='toontown/toonbase/StartCompiledGam
                     help='The path to the instantiation module.')
 
 #Argument for Python Modules to be Included
-parser.add_argument('modules', nargs='*', default=['otp', 'toontown', 'dependencies'],
+parser.add_argument('modules', nargs='*', default=['otp', 'toontown', 'libotp', 'libtoontown'],
                     help='The Toontown modules to be included in the build.')
 
 #Argument for the Panda3D Directory

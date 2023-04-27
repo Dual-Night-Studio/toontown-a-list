@@ -138,6 +138,9 @@ class ToonBase(OTPBase.OTPBase):
         self.aspectRatio = float(self.oldX) / self.oldY
         return
 
+    def getValue(self, key, default = None):
+        return os.environ.get(key, default)
+    
     def openMainWindow(self, *args, **kw):
         result = OTPBase.OTPBase.openMainWindow(self, *args, **kw)
         self.setCursorAndIcon()
@@ -329,7 +332,7 @@ class ToonBase(OTPBase.OTPBase):
             gameServer = launcherServer
             self.notify.info('Using gameServer from launcher: %s ' % gameServer)
         else:
-            gameServer = '127.0.0.1'
+            gameServer = self.getValue('TT_GAMESERVER')
         serverPort = base.config.GetInt('server-port', 7198)
         serverList = []
         for name in gameServer.split(';'):

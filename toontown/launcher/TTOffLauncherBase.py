@@ -62,7 +62,7 @@ class TTOffLauncherBase(LauncherBase):
         if self.gameServer:
             gameServer = self.gameServer
         else:
-            gameServer = '127.0.0.1'
+            gameServer = self.getValue('TT_GAMESERVER')
         self.notify.info('Game Server %s' % gameServer)
         self.goUserName = ''
         self.lastLauncherMsg = None

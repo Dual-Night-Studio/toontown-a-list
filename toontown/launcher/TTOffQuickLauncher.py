@@ -32,7 +32,7 @@ class TTOffQuickLauncher(TTOffLauncherBase):
         return self.getValue('IS_TEST_SERVER', 0)
 
     def getGameServer(self):
-        return self.getValue('TTOFF_GAME_SERVER', '')
+        return self.getValue('TT_GAME_SERVER', '')
 
     def getLogFileName(self):
         return 'ttoff'
