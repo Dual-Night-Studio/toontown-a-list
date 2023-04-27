@@ -2,7 +2,7 @@
 # specific to developer instances of Toontown Online.
 
 # Window settings
-window-title Toontown Freedom
+window-title Toontown Freedom [DEV]
 
 # Notify settings
 console-output true
