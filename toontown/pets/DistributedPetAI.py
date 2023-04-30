@@ -24,8 +24,10 @@ import random
 import time
 import string
 import copy
-from direct.showbase.PythonUtil import StackTrace
-
+try:
+    from direct.showbase.PythonUtil import StackTrace
+except ImportError:
+    StackTrace = None
 class DistributedPetAI(DistributedSmoothNodeAI.DistributedSmoothNodeAI, PetLookerAI.PetLookerAI, PetBase.PetBase):
     notify = DirectNotifyGlobal.directNotify.newCategory('DistributedPetAI')
     movieTimeSwitch = {PetConstants.PET_MOVIE_FEED: PetConstants.FEED_TIME,

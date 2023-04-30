@@ -8,7 +8,10 @@ from toontown.toon import ToonHead
 from toontown.minigame.CannonGameGlobals import *
 from toontown.toonbase import ToontownGlobals
 from toontown.parties.PartyUtils import toRadians, calcVelocity
-from direct.showbase.PythonUtil import StackTrace
+try:
+    from direct.showbase.PythonUtil import StackTrace
+except ImportError:
+    StackTrace = None
 CANNON_ROTATION_MIN = -70
 CANNON_ROTATION_MAX = 70
 INITIAL_VELOCITY = 80.0

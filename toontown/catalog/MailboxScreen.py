@@ -11,8 +11,10 @@ from toontown.toontowngui import TTDialog
 from toontown.toontowngui.TeaserPanel import TeaserPanel
 from toontown.parties.InviteVisual import InviteVisual
 from . import CatalogItem
-from direct.showbase.PythonUtil import StackTrace
-
+try:
+    from direct.showbase.PythonUtil import StackTrace
+except ImportError:
+    StackTrace = None
 class MailboxScreen(DirectObject.DirectObject):
     notify = directNotify.newCategory('MailboxScreen')
 
